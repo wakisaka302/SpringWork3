@@ -2,7 +2,7 @@ package com.example.demo;
 
 public class HelloWorld {
 	public HelloWorld() {
-		System.out.println("Heello World!");
+		System.out.println("Heeallo World!");
 		
 	}
 }
