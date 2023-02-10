@@ -1,4 +1,4 @@
-package com.example.demo.erepository;
+package com.example.demo;
 
 public class HelloWorld {
 	public HelloWorld() {
