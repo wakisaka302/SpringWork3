@@ -1,10 +1,65 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="common/head :: head_fragment(title = 'ユーザー新規登録', scripts = ~{::script}, links = ~{::link})">
+
 <meta charset="UTF-8">
-<title>ae</title>
+<style type="text/css">
+.mgr-75 {
+	margin-right: 75px;
+}
+
+.mgr-27 {
+	margin-right: 27px;
+}
+
+.mgr-43 {
+	margin-right: 43px;
+}
+</style>
 </head>
 <body>
+	<div class="container">
+		<div th:if="${validationError}" th:each="error : ${validationError}">
+			<label class="text-danger" th:text="${error}"></label>
+		</div>
+		<h1>ユーザー新規登録</h1>
+		<form th:action="@{/user/create}" th:object="${userRequest}"
+			th:method="post">
+			<div class="form-group">
+				<label><span class="mgr-75">名前 </span>：</label> <input type="text"
+					th:field="*{name}" class="form-control">※
+			</div>
+			<div class="form-group">
+				<label><span class="mgr-43">生年月日 </span>：</label> <input type="text"
+					th:field="*{name}" class="form-control">
+			</div>
+			<div class="form-group">
+				<label><span class="mgr-75">住所 </span>：</label> <input type="text"
+					th:field="*{address}" class="form-control">※
+			</div>
+			<div class="form-group">
+				<label><span class="">メールアドレス</span>：</label> <input type="text"
+					th:field="*{phone}" class="form-control">※
+			</div>
+			<div class="form-group">
+				<label><span class="mgr-27">クレジット </span>：</label> <input
+					type="text" th:field="*{phone}" class="form-control">※
+			</div>
+			<div class="form-group">
+				<label><span class="mgr-27">パスワード </span>：</label> <input
+					type="text" th:field="*{address}" class="form-control">※
+			</div>
 
+			<br />
+
+			<div class="text-center">
+				(※は必須項目です。)<a href="/user/list" class="btn btn-secondary">キャンセル</a>
+				<input type="submit" value="　登録　" class="btn btn-primary">
+
+			</div>
+		</form>
+	</div>
 </body>
 </html>
