@@ -37,8 +37,8 @@ public class UserRequest implements Serializable {
   @Pattern(regexp = "0\\d{1,4}-\\d{1,4}-\\d{1,4}-\\d{4}", message = "クレジット番号の形式で入力してください")
   private String credit;
   /**
-   * メールアドレス
+   * パスワード
    */
-  @Size(max = 8, message = "パスワードは50桁以内で入力してください")
+  @Size(max = 8, message = "パスワードは8桁以内で入力してください")
   private String pw;
 }
