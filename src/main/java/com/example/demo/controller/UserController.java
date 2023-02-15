@@ -56,7 +56,7 @@ public class UserController {
 	 */
 	@GetMapping(value = "/user/{id}")
 	public String displayView(@PathVariable Long id, Model model) {
-		  Userinfo user = userService.findById(id);
+		  Userinfo user = UserService.findById(id);
 		    model.addAttribute("userData", user);
 		return "user/view";
 	}
