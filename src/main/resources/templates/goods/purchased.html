@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="jp" xmlns:th="http://www.thymeleaf.org">
 <head>
+
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
 <meta charset="UTF-8">
+<style>
+.center {
+	width: 500px;
+	margin: 0 auto;
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h1 style="text-align: center; padding-top: 30px;">購入が完了しました</h1>
+	
+	<!-- 今回の購入商品情報表示 -->
+	<div>
+	<table class=" table table-striped">
+      <thead>
+        <tr>
+          <th>購入日</th>
+          <th>商品名</th>
+          <th>単価</th>
+          <th>個数</th>
+          <th>合計金額</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="sales : ${userlist}" th:object="${user}" class="align-middle">
+        <td th:text="${#dates.format(user.updateDate, 'yyyy/MM/dd')}"></td>
+          <td th:text="*{goods_name}"></td>
+          <td th:text="*{price}"></td>
+          <td th:text="*{order_num}"></td>
+          <td th:text="*{total}"></td>
+          
+        </tr>
+      </tbody>
+    </table>
+	</div>
 </body>
 </html>

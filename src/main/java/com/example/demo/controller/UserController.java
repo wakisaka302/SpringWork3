@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,11 +19,19 @@ import com.example.demo.dto.UserRequest;
 import com.example.demo.entity.Goods;
 import com.example.demo.entity.UserInfo;
 import com.example.demo.entity.Userinfo;
+import com.example.demo.repository.UserMapper;
 import com.example.demo.service.UserService;
 
 @Controller
 public class UserController {
-	
+
+	@Autowired
+	UserMapper Goods;
+	@Autowired
+	UserMapper Saless;
+	@Autowired
+	UserMapper UserInfo;
+
 	//head部分のアクション
 
 	/**
@@ -30,25 +39,25 @@ public class UserController {
 	 * @param model Model
 	 * @return TOP覧画面
 	 */
-	@GetMapping(value = "top")
+	@GetMapping(value = "/goods/top")
 	public String displayList(Model model) {
 		List<Goods> userlist = UserService.searchAll();
 		model.addAttribute("userlist", userlist);
 		return "goods/topt";
 	}
-	
+
 	/**
 	 * 商品一覧画面を表示
 	 * @param model Model
 	 * @return 商品一覧画面
 	 */
-	@GetMapping(value = "goodslist")
+	@GetMapping(value = "/goods/goodslist")
 	public String displayList(Model model) {
 		List<Goods> userlist = UserService.searchAll();
 		model.addAttribute("userlist", userlist);
 		return "goods/goodslist";
 	}
-	
+
 	/**
 	 * 会員情報画面を表示
 	 * @param model Model
@@ -56,52 +65,63 @@ public class UserController {
 	 */
 	@GetMapping(value = "/user/{id}")
 	public String displayView(@PathVariable Long id, Model model) {
-		  Userinfo user = userService.findById(id);
-		    model.addAttribute("userData", user);
+		Userinfo user = UserService.findById(id);
+		model.addAttribute("userData", user);
 		return "user/view";
 	}
-	
+
 	/**
 	 * ログイン画面を表示
 	 * @param model Model
 	 * @return ログイン画面
 	 */
-	@GetMapping(value = "login")
+	@GetMapping(value = "/user/login")
 	public String displayList(Model model) {
 		List<UserInfo> userlist = UserService.searchAll();
 		model.addAttribute("userlist", userlist);
 		return "user/login";
 	}
-	
+
 	/**
 	 * 会社概要画面を表示
 	 * @param model Model
 	 * @return 会社概要画面
 	 */
-	@GetMapping(value = "companyinfo")
+	@GetMapping(value = "/company/companyinfo")
 	public String displayList(Model model) {
 		List<User> userlist = UserService.searchAll();
 		model.addAttribute("userlist", userlist);
 		return "company/companyinfo";
 	}
-	
+
 	/**
 	 * Q&A画面を表示
 	 * @param model Model
 	 * @return Q&A画面
 	 */
-	@GetMapping(value = "Q&A")
+	@GetMapping(value = "/company/Q&A")
 	public String displayList(Model model) {
 		List<User> userlist = UserService.searchAll();
 		model.addAttribute("userlist", userlist);
 		return "company/Q&A";
 	}
-	
-	
-	/**ログイン・会員登録画面の
-	 * 新規会員登録をクリックした場合動作
+
+	/**
+	 * 商品検索結果一覧画面を表示
+	 * @param model Model
+	 * @return 検索結果一覧画面
 	 */
-	
+	@GetMapping(value = "/goods/search")
+	public String displayList(Model model) {
+		List<Goods> userlist = UserService.searchAll();
+		model.addAttribute("userlist", userlist);
+		return "goods/search";
+	}
+
+
+	//ログイン・会員登録画面の
+	//新規会員登録をクリックした場合動作
+
 	/**
 	 * ユーザー新規会員登録画面を表示
 	 * @param model Model
@@ -132,6 +152,22 @@ public class UserController {
 		// ユーザー情報の登録
 		UserService.create(UserRequest);
 		return "redirect:/user/list";
+	}
+
+
+	//TOP・商品一覧・商品検索一覧から
+	// 商品詳細画面へ
+
+	/**
+	 * 商品詳細情報画面を表示
+	 * @param model Model
+	 * @return 商品詳細情報画面
+	 */
+	@GetMapping(value = "/goods/{id}")
+	public String displayView(@PathVariable Long id, Model model) {
+		Userinfo user = UserService.findById(id);
+		model.addAttribute("userData", user);
+		return "goods/goods";
 	}
 
 }
