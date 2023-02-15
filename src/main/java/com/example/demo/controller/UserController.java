@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,10 +19,18 @@ import com.example.demo.dto.UserRequest;
 import com.example.demo.entity.Goods;
 import com.example.demo.entity.UserInfo;
 import com.example.demo.entity.Userinfo;
+import com.example.demo.repository.UserMapper;
 import com.example.demo.service.UserService;
 
 @Controller
 public class UserController {
+
+	@Autowired
+	UserMapper Goods;
+	@Autowired
+	UserMapper Saless;
+	@Autowired
+	UserMapper UserInfo;
 
 	//head部分のアクション
 
@@ -145,9 +154,9 @@ public class UserController {
 		return "redirect:/user/list";
 	}
 
-	
-	 //TOP・商品一覧・商品検索一覧から
-	 // 商品詳細画面へ
+
+	//TOP・商品一覧・商品検索一覧から
+	// 商品詳細画面へ
 
 	/**
 	 * 商品詳細情報画面を表示
