@@ -34,7 +34,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr th:each="user : ${userlist}" th:object="${user}" class="align-middle">
+        <tr th:each="sales : ${userlist}" th:object="${user}" class="align-middle">
         <td th:text="${#dates.format(user.updateDate, 'yyyy/MM/dd')}"></td>
           <td th:text="*{goods_name}"></td>
           <td th:text="*{price}"></td>
