@@ -10,16 +10,40 @@
 	crossorigin="anonymous">
 <meta charset="UTF-8">
 <style>
-    .center{
-      width:500px;
-      margin: 0 auto;
-    }
-  </style>
+.center {
+	width: 500px;
+	margin: 0 auto;
+}
+</style>
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="center" style="background-color:#dcdcdc; width:1200px; height:500px;">
-	<h1 style="text-align:center; padding-top:30px;">購入が完了しました</h1>
-</div>
+	<h1 style="text-align: center; padding-top: 30px;">購入が完了しました</h1>
+	
+	<!-- 今回の購入商品情報表示 -->
+	<div>
+	<table class=" table table-striped">
+      <thead>
+        <tr>
+          <th>購入日</th>
+          <th>商品名</th>
+          <th>単価</th>
+          <th>個数</th>
+          <th>合計金額</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="user : ${userlist}" th:object="${user}" class="align-middle">
+        <td th:text="${#dates.format(user.updateDate, 'yyyy/MM/dd')}"></td>
+          <td th:text="*{goods_name}"></td>
+          <td th:text="*{price}"></td>
+          <td th:text="*{order_num}"></td>
+          <td th:text="*{total}"></td>
+          
+        </tr>
+      </tbody>
+    </table>
+	</div>
 </body>
 </html>
