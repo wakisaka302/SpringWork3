@@ -12,11 +12,33 @@
 <title>Insert title here</title>
 <style type="text/css">
 .logo {
-	margin-bottom: 20px;
+	margin-bottom: 0px;
+}
+
+.example {
+	display: inline-block;
+}
+
+.example img {
+	display: block;
 }
 </style>
 </head>
 <body>
+	<!-- 以下ピカチュウ -->
+	<img src="pika1.gif" width="80" height="80" />
+	<a href="" onclick="ShowAlart()"><img src="pika_click.gif" alt=""
+		width="80" height="80"></a>
+	<a href="aka.png" class="example"> <img src="aka.png" width="80"
+		height="80"></a>
+	<img src="ao.png" width="80" height="80" />
+	<img src="midori.png" width="80" height="80" />
+	<img src="pika1.gif" width="80" height="80" />
+	<img src="pika2.gif" width="80" height="80" />
+	<img src="pika3.gif" width="80" height="80" />
+	<!--<button type="button" onclick="ShowAlart()">ピカチュウ</button>-->
+	<!-- 以上 -->
+
 	<div class="logo"></div>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
@@ -50,5 +72,11 @@
 			</div>
 		</div>
 	</nav>
+
+	<script>
+		function ShowAlart() {
+			alert("【No.0025/ピカチュウ】  高さ： 0.4m 重さ： 6.0kg\n\n かたい きのみも でんげきで やいて やわらかくしてから たべる ちえを もちあわせている。");
+		}
+	</script>
 </body>
 </html>

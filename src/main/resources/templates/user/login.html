@@ -4,26 +4,106 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head
 	th:replace="common/head :: head_fragment(title = 'ユーザー新規登録', scripts = ~{::script}, links = ~{::link})">
-
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
 <meta charset="UTF-8">
 <style type="text/css">
-.mgr-32{
-    margin-right : 32px;
+
+body {
+  background-color: #808080;
+}
+
+form {
+  width: 800px;
+  padding: 40px 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: #000;
+  text-align: center;
+}
+
+form h1,form p {
+  color: white;
+  font-weight: 500;
+}
+
+form p {
+  font-size: 10px;
+}
+
+form input[type = "id"],form input[type = "password"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  border: 2px solid #dbd639;
+  padding: 15px 10px;
+  width: 200px;
+  outline: none;
+  border-radius: 24px;
+  transition: 0.25s;
+  text-align: center;
+}
+
+form input[type = "id"]:focus,form input[type = "password"]:focus {
+  width: 280px;
+  background-color: #f0f8ff;
+}
+
+form input[type = "submit"]{
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  border: 2px solid #f0f8ff;
+  padding: 15px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 25px;
+  transition: 0.25s;
+  text-align: center;
+  cursor: pointer;
+}
+
+form input[type = "submit"]:hover {
+  background-color: #dbd639;
+  border: 2px solid #dbd639;
 }
 </style>
 <body>
-	<h2>ログインしてください。</h2>
-	<form>
+	<!--<div class="container" style="background:#eeeeee;">-->
 
-	<label for="email">メールアドレス：</label>
-	<input type="email" name="email">
-	<br>
-	<label for="password"><span class="mgr-32">パスワード</span></label>：
-	<input type="password" name="password">
-	<button type="submit">ログイン</button>
+		
+		<form name="login_form">
+			<div class="login_form_top">
+				<h1>ログイン画面</h1>
+				<p>メールアドレス、パスワードをご入力の上、「ログイン」ボタンをクリック\nまたは、新規登録</p>
+			</div>
+			<div class="login_form_btm">
+				<input type="id" name="user_id" placeholder="メールアドレスを入力してください"><br>
+				<input type="password" name="password" placeholder="パスワードを入力してください">
+			</div>
+			<button type="submit"class="btn btn-primary">ログイン</button>
+			<button type="button" class="btn btn-secondary">新規登録</button>
+		</form>
+		
+		<form name="login_form">
+      <div class="login_form_top">
+        <h1>LOGIN</h1>
+        <p>Mail、Passwordをご入力の上、「LOGIN」ボタンをクリックして下さい。</p>
+      </div>
+      <div class="login_form_btm">
+        <input type="id" name="user_id" placeholder="Mail">
+        <input type="password" name="password" placeholder="Password">
+        <input type="submit" name="botton" value="LOGIN"> <input type="submit" name="botton" value="新規登録はこちら">
+      </div>
+    </form>
+	</div>
 
-	<br>
-	<br> 新規登録はこちら>>
-	<button type="submit">新規登録</button>
-	</form>
 </body>
