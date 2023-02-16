@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 .logo {
-	margin-bottom: 0px;
+	margin-bottom: 20px;
 }
 
 .example {
@@ -26,20 +26,20 @@
 </head>
 <body>
 	<!-- 以下ピカチュウ -->
-	<img src="pika1.gif" width="80" height="80" />
-	<a href="" onclick="ShowAlart()"><img src="pika_click.gif" alt=""
+	<div th:fragment="frag_body"><!-- th:fragment="フラグメント名" -->
+	<img th:src="@{/images/pika1.gif}" width="80" height="80" />
+	<a href="" onclick="ShowAlart()"><img th:src="@{/images/pika_click.gif}" alt=""
 		width="80" height="80"></a>
-	<a href="aka.png" class="example"> <img src="aka.png" width="80"
+	<a href="aka.png" class="example"> <img th:src="@{/images/aka.png}" width="80"
 		height="80"></a>
-	<img src="ao.png" width="80" height="80" />
-	<img src="midori.png" width="80" height="80" />
-	<img src="pika1.gif" width="80" height="80" />
-	<img src="pika2.gif" width="80" height="80" />
-	<img src="pika3.gif" width="80" height="80" />
+	<img th:src="@{/images/ao.png}" width="80" height="80" />
+	<img th:src="@{/images/midori.png}" width="80" height="80" />
+	<img th:src="@{/images/pika1.gif}" width="80" height="80" />
+	<img th:src="@{/images/pika2.gif}" width="80" height="80" />
+	<img src="@{/images/pika3.gif}" width="80" height="80" />
 	<!--<button type="button" onclick="ShowAlart()">ピカチュウ</button>-->
 	<!-- 以上 -->
 
-	<div class="logo"></div>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
 
@@ -58,20 +58,22 @@
 					<li class="nav-item"><a class="nav-link"
 						href="../user/view.html">会員情報</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="../user/view.html">ログイン・会員登録</a></li>
+						href="../user/login.html">ログイン・会員登録</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="../company/companyinfo.html">会社概要</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="../company/Q&A.html">Q&A</a></li>
 				</ul>
 				<form class="d-flex">
-					<input class="form-control me-2" type="search" placeholder="検索欄"
+					<input class="form-control me-2" type="search" placeholder="Search"
 						aria-label="Search">
 					<button class="btn btn-outline-success" type="submit">検索</button>
 				</form>
 			</div>
 		</div>
+		
 	</nav>
+	
 
 	<script>
 		function ShowAlart() {
@@ -79,5 +81,6 @@
 		}
 	</script>
 	<div class="logo"></div>
+	</div>
 </body>
 </html>
