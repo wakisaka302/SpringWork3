@@ -29,7 +29,7 @@ public class UserController {
 	/**
 	 * TOP画面を表示
 	 * @param model Model
-	 * @return TOP覧画面
+	 * @return TOP画面
 	 */
 	@GetMapping(value = "/goods/top")
 	public String displayTop(Model model) {
