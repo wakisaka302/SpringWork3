@@ -169,5 +169,17 @@ public class UserController {
 		model.addAttribute("userData", user);
 		return "goods/goods";
 	}
+	
+	/**
+	 * 購入完了画面を表示
+	 * @param model Model
+	 * @return 購入完了画面
+	 */
+	@GetMapping(value = "/goods/purchased")
+	public String displayView(@PathVariable Long id, Model model) {
+		Userinfo user = UserService.findById(id);
+		model.addAttribute("userData", user);
+		return "goods/purchased";
+	}
 
 }

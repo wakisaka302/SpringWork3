@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 .logo {
-	margin-bottom: 0px;
+	margin-bottom: 20px;
 }
 
 .example {
@@ -26,20 +26,20 @@
 </head>
 <body>
 	<!-- 以下ピカチュウ -->
-	<img src="pika1.gif" width="80" height="80" />
-	<a href="" onclick="ShowAlart()"><img src="pika_click.gif" alt=""
+	<div th:fragment="frag_body"><!-- th:fragment="フラグメント名" -->
+	<img th:src="@{/images/pika1.gif}" width="80" height="80" />
+	<a href="" onclick="ShowAlart()"><img th:src="@{/images/pika_click.gif}" alt=""
 		width="80" height="80"></a>
-	<a href="aka.png" class="example"> <img src="aka.png" width="80"
+	<a href="aka.png" class="example"> <img th:src="@{/images/aka.png}" width="80"
 		height="80"></a>
-	<img src="ao.png" width="80" height="80" />
-	<img src="midori.png" width="80" height="80" />
-	<img src="pika1.gif" width="80" height="80" />
-	<img src="pika2.gif" width="80" height="80" />
-	<img src="pika3.gif" width="80" height="80" />
+	<img th:src="@{/images/ao.png}" width="80" height="80" />
+	<img th:src="@{/images/midori.png}" width="80" height="80" />
+	<img th:src="@{/images/pika1.gif}" width="80" height="80" />
+	<img th:src="@{/images/pika2.gif}" width="80" height="80" />
+	<img src="@{/images/pika3.gif}" width="80" height="80" />
 	<!--<button type="button" onclick="ShowAlart()">ピカチュウ</button>-->
 	<!-- 以上 -->
 
-	<div class="logo"></div>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
 
@@ -71,7 +71,9 @@
 				</form>
 			</div>
 		</div>
+		
 	</nav>
+	
 
 	<script>
 		function ShowAlart() {
@@ -79,5 +81,6 @@
 		}
 	</script>
 	<div class="logo"></div>
+	</div>
 </body>
 </html>
