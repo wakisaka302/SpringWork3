@@ -4,6 +4,7 @@
 <head
 	th:replace="common/head :: head_fragment(title = '会員情報', scripts = ~{::script}, links = ~{::link})"></head>
 <body>
+<div th:include="common/head :: frag_body"></div>
 	<div class="container">
 		<h1>会員情報</h1>
 		<div th:object="${userData}">
@@ -52,9 +53,8 @@
 		</div>
 		<br />
 		<div class="text-center">
-		
-			<a th:href="@{/user/{id}/edit(id=*{id})}" class="btn btn-primary">
-				編集 </a> 
+		<input type="submit" value="　編集　" class="btn btn-primary">
+			
 		</div>
 		<h1>購入履歴</h1>
 
