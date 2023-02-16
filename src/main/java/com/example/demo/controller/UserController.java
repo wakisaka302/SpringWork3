@@ -31,8 +31,7 @@ public class UserController {
 	 */
 	@GetMapping(value = "/goods/top")
 	public String displayTop(Model model) {
-//		List<Goods> userlist = UserService.searchAll();
-//		model.addAttribute("userlist", userlist);
+
 		return "goods/top";
 	}
 
