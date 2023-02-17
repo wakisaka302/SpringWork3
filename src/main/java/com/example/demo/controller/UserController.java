@@ -170,5 +170,8 @@ public class UserController {
 //		model.addAttribute("userData", user);
 		return "goods/purchased";
 	}
+	
+	
+	  
 
 }
