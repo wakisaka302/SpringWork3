@@ -19,12 +19,12 @@ import com.example.demo.dto.UserRequest;
 @Controller
 public class UserController {
 
-//	@Autowired
-//	UserMapper Goods;
-//	@Autowired
-//	UserMapper Saless;
-//	@Autowired
-//	UserMapper UserInfo;
+	//	@Autowired
+	//	UserMapper Goods;
+	//	@Autowired
+	//	UserMapper Saless;
+	//	@Autowired
+	//	UserMapper UserInfo;
 
 	//head部分のアクション
 
@@ -46,8 +46,8 @@ public class UserController {
 	 */
 	@GetMapping(value = "/goods/goodslist")
 	public String displayGoodslist(Model model) {
-//		List<Goods> userlist = UserService.searchAll();
-//		model.addAttribute("userlist", userlist);
+		//		List<Goods> userlist = UserService.searchAll();
+		//		model.addAttribute("userlist", userlist);
 		return "goods/goodslist";
 	}
 
@@ -58,17 +58,17 @@ public class UserController {
 	 */
 	@GetMapping(value = "/user/{id}")
 	public String displayView(@PathVariable Long id, Model model) {
-//		Userinfo user = UserService.getUserInfo(id);
-//      if(user.userid =!= null){
-//		model.addAttribute("userData", user);
+		//		Userinfo user = UserService.getUserInfo(id);
+		//      if(user.userid =!= null){
+		//		model.addAttribute("userData", user);
 		// List<Sales> list = UserService.getSales(id)
 		//model.addAttribute("userlist", list);
 		//return "user/view";
-		
-//      } else{
-//		return "goods/top";
-//	}
-//		
+
+		//      } else{
+		//		return "goods/top";
+		//	}
+		//		
 		return "user/view";
 	}
 
@@ -116,10 +116,10 @@ public class UserController {
 	 */
 	@GetMapping(value = "/user/add")
 	public String displayAdd(Model model) {
-//		model.addAttribute("userRequest", new UserRequest());
+		//		model.addAttribute("userRequest", new UserRequest());
 		return "user/add";
 	}
-	
+
 	/**
 	 * ユーザー新規登録
 	 * @param userRequest リクエストデータ
@@ -130,7 +130,7 @@ public class UserController {
 	public String create(@Validated @ModelAttribute UserRequest userRequest, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			// 入力チェックエラーの場合
-		List<String> errorList = new ArrayList<String>();
+			List<String> errorList = new ArrayList<String>();
 			for (ObjectError error : result.getAllErrors()) {
 				errorList.add(error.getDefaultMessage());
 			}
