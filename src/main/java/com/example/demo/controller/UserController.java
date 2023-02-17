@@ -5,8 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.example.demo.dto.UserRequest;
-
 @Controller
 public class UserController {
 
@@ -113,7 +111,7 @@ public class UserController {
 	 */
 	@GetMapping(value = "/user/add")
 	public String displayAdd(Model model) {
-		model.addAttribute("userRequest", new UserRequest());
+//		model.addAttribute("userRequest", new UserRequest());
 		return "user/add";
 	}
 	
