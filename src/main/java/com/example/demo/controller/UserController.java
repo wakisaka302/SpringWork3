@@ -20,11 +20,8 @@ import com.example.demo.dto.UserRequest;
 public class UserController {
 
 	//	@Autowired
-	//	UserMapper Goods;
-	//	@Autowired
-	//	UserMapper Saless;
-	//	@Autowired
-	//	UserMapper UserInfo;
+	//	UserService UserService;
+	
 
 	//head部分のアクション
 
