@@ -102,10 +102,21 @@ public class UserController {
 		return "company/qa";
 	}
 
+	/**
+	 * 商品詳細情報画面
+	 * @param model Model
+	 * @return 商品詳細情報画面
+	 */
+	@GetMapping(value = "/goods/{id}")
+	public String displayGoods(@PathVariable Long id, Model model) {
+//		Goods goods = UserService.findById(id);
+//		model.addAttribute("Goods", goods);
+		return "goods/goods";
+	}
+	
 
 	//ログイン・会員登録画面の
 	//新規会員登録をクリックした場合動作
-
 	/**
 	 * ユーザー新規会員登録画面を表示
 	 * @param model Model
