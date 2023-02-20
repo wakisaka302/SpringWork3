@@ -5,7 +5,12 @@
 	th:replace="common/head :: head_fragment(title = '会社概要', scripts = ~{::script}, links = ~{::link})">
 
 <meta charset="UTF-8">
-<title>会社概要</title>
+
+
+<style type="text/css">
+
+</style>
+
 </head>
 <body>
 	<div th:include="common/head :: frag_body"></div>
@@ -13,35 +18,34 @@
 	
 	<div class="container">
 	<h1>会社概要</h1>
-		<table class="table table-striped">
+		<table class="table">
 			<tbody>
 				<tr>
-					<th>会社名</th>
-					<td>株式会社Spring（Spring Corporation）</td>
+					<th class="table-success">会社名</th>
+					<td>株式会社Spring</td>
 				</tr>
 				<tr>
-					<th>取締役</th>
-					<td>田原 周和</td>
+					<th class="table-success">リーダー</th>
+					<td>田原</td>
 				</tr>
 				<tr>
-					<th>設立</th>
+					<th class="table-success">設立</th>
 					<td>2023年2月1日</td>
 				</tr>
 				<tr>
-					<th>資本金</th>
+					<th class="table-success">資本金</th>
 					<td>3億円</td>
 				</tr>
 				<tr>
-					<th>住所</th>
-					<td>〒111-222 谷畑さんのご自宅</td>
+					<th class="table-success">住所</th>
+					<td>〒***-**** 谷畑さんのご自宅</td>
 				</tr>
 				<tr>
-					<th>TEL</th>
-					<td>090-1111-2222</td>
+					<th class="table-success">TEL</th>
+					<td>***-****-****</td>
 				</tr>
 			</tbody>
 		</table>
-		<!-- Content here -->
 	</div>
 </body>
 </html>
