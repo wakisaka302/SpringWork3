@@ -1,1 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.UserMapper">
+	<resultMap type="com.example.demo.entity.UserInfo" id="UserMap">
+		<result column="user_id" jdbcType="INTEGER" property="user_id" />
+		<result column="pw" jdbcType="VARCHAR" property="pw" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="birth" jdbcType="DATE" property="birth" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="mail" jdbcType="VARCHAR" property="mail" />
+		<result column="credit" jdbcType="VARCHAR" property="credit" />
+	</resultMap>
+	<select id="" resultMap="UserMap" resultType="java.lang.Integer">
+		
+	</select>
+	
+	
+	
+	
+	<insert id="userInsert">
+	INSERT INTO userinfo (pw,name,birth,address,mail,credit) values (#{pw},#{name},#{birth},#{address},#{mail},#{credit})
+	</insert>
+	
+</mapper>
+
+
+

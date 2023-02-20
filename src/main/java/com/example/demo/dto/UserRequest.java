@@ -1,5 +1,6 @@
 package com.example.demo.dto;
 import java.io.Serializable;
+import java.sql.Date;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
@@ -20,7 +21,7 @@ public class UserRequest implements Serializable {
    * 生年月日
    */
   @Size(max = 8, message = "誕生日は8桁以内で入力してください")
-  private String birth;
+  private Date birth;
   /**
    * 住所
    */

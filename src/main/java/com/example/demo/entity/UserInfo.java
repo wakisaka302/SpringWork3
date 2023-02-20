@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 import lombok.Data;
 
