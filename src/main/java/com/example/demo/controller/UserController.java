@@ -110,7 +110,7 @@ public class UserController {
 	@GetMapping(value = "/goods/goods/{id}")
 	public String displayGoods(@PathVariable String id, Model model) {
 //		Integer Id = Integer.parseInt(id);
-//		List<Goods> goods = UserService.getGoodsDetail(Id);
+//		Goods goods = UserService.getGoodsDetail(Id);
 //		model.addAttribute("goods", goods);
 		return "goods/goods";
 	}
