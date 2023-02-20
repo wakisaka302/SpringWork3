@@ -30,6 +30,7 @@ public class UserService {
 	
 	//商品詳細をselect
 	public Goods getGoodsDetail(Integer goods_id){
+		//System.out.println(goods_id);
 		return repository.selectGoods(goods_id);
 	}
 

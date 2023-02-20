@@ -23,7 +23,7 @@ import com.example.demo.service.UserService;
 public class UserController {
 
 		@Autowired
-		UserService UserService;
+		UserService userService;
 	
 
 	//head部分のアクション
@@ -111,9 +111,8 @@ public class UserController {
 	 * @return 商品詳細情報画面
 	 */
 	@GetMapping(value = "/goods/goods/{id}")
-	public String displayGoods(@PathVariable String id, Model model) {
-		Integer Id = Integer.parseInt(id);
-		Goods goods = UserService.getGoodsDetail(Id);
+	public String displayGoods(@PathVariable Integer id, Model model) {
+		Goods goods = userService.getGoodsDetail(id);
 		model.addAttribute("goods", goods);
 		return "goods/goods";
 	}

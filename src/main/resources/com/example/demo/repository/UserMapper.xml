@@ -10,9 +10,7 @@
 		<result column="mail" jdbcType="VARCHAR" property="mail" />
 		<result column="credit" jdbcType="VARCHAR" property="credit" />
 	</resultMap>
-	<select id="" resultMap="UserMap" resultType="java.lang.Integer">
-		
-	</select>
+	
 	
 	
 	 <!-- 新規登録 -->
@@ -23,7 +21,7 @@
 	
 	
 <!-- ここからGoodsテーブル -->
-	<resultMap id="GoodsMap" type="jp.co.trainocamp.demo.mybatis.entity.Goods">
+	<resultMap id="GoodsMap" type="com.example.demo.entity.Goods">
 		<result column="goods_id" jdbcType="INTEGER" property="goods_id" />
 		<result column="goods_name" jdbcType="VARCHAR" property="goods_name"/>
 		<result column="stock" jdbcType="INTEGER" property="stock" />
@@ -33,7 +31,7 @@
 	
 	<!-- 商品詳細をselect -->
 	<select id="selectGoods" resultMap="GoodsMap">
-	SELECT goods_name, stock, price, detail FROM goods where goods_id = {#goods_id}
+	SELECT goods_id,goods_name, stock, price, detail FROM goods where goods_id = #{goods_id}
 	</select>
 	
 	
