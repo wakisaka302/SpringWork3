@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,12 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.dto.UserRequest;
+import com.example.demo.entity.Goods;
+import com.example.demo.service.UserService;
 
 @Controller
 public class UserController {
 
-	//	@Autowired
-	//	UserService UserService;
+		@Autowired
+		UserService UserService;
 	
 
 	//head部分のアクション
@@ -109,9 +112,9 @@ public class UserController {
 	 */
 	@GetMapping(value = "/goods/goods/{id}")
 	public String displayGoods(@PathVariable String id, Model model) {
-//		Integer Id = Integer.parseInt(id);
-//		Goods goods = UserService.getGoodsDetail(Id);
-//		model.addAttribute("goods", goods);
+		Integer Id = Integer.parseInt(id);
+		Goods goods = UserService.getGoodsDetail(Id);
+		model.addAttribute("goods", goods);
 		return "goods/goods";
 	}
 	
