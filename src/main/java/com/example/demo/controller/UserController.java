@@ -96,10 +96,10 @@ public class UserController {
 	 * @param model Model
 	 * @return Q&A画面
 	 */
-	@GetMapping(value = "/company/Q&A")
+	@GetMapping(value = "/company/qa")
 	public String displayQa(Model model) {
 
-		return "company/Q&A";
+		return "company/qa";
 	}
 
 
