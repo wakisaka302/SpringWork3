@@ -107,10 +107,10 @@ public class UserController {
 	 * @param model Model
 	 * @return 商品詳細情報画面
 	 */
-	@GetMapping(value = "/goods/{id}")
+	@GetMapping(value = "/goods/goods/{id}")
 	public String displayGoods(@PathVariable Long id, Model model) {
-//		Goods goods = UserService.findById(id);
-//		model.addAttribute("Goods", goods);
+//		List<Goods> goods = UserService.getGoodsDetail(id);
+//		model.addAttribute("goods", goods);
 		return "goods/goods";
 	}
 	
@@ -132,7 +132,7 @@ public class UserController {
 	 * ユーザー新規登録
 	 * @param userRequest リクエストデータ
 	 * @param model Model
-	 * @return ユーザー情報一覧画面
+	 * @return 成功時:TOP画面 /失敗時：ユーザー新規登録画面
 	 */
 	@RequestMapping(value = "/user/create", method = RequestMethod.POST)
 	public String create(@Validated @ModelAttribute UserRequest userRequest, BindingResult result, Model model) {
