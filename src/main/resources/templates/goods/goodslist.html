@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>商品一覧</title>
@@ -13,27 +14,27 @@ body{border:5px solid black;
 .right{
 padding-left:1200px;
 }
-
 </style>
 </head>
 <body>
+<div th:include="common/head :: frag_body"></div>
 <h1>商品一覧</h1>
 <table align ="center" border ="1">
 <tr>
-<td> <a href = "goods.html"><img src = "counter.jpg" alt = "商品詳細ページへ" width="400" height="400"></a><br>勝ち勝ちくんクリア　ツインエンジェルバージョン<br> ￥3500</td>
+<td> <a href = "goods.html"><img th:src = "@{/images/counter.jpg}" alt = "商品詳細ページへ" width="400" height="400"></a><br>勝ち勝ちくんクリア　ツインエンジェルバージョン<br> ￥3500</td>
 
-<td> <a href = "goods.html"><img src = "itigo.png" alt = "商品詳細ページへ" width="400" height="400"></a><br> 苺大福 <br>￥130</td>
+<td> <a href = "goods.html"><img th:src = "@{/images/itigo.png}" alt = "商品詳細ページへ" width="400" height="400"></a><br> 苺大福 <br>￥130</td>
 
 
-<td> <a href = "goods.html"><img src = "elephant.png" alt = "商品詳細ページへ" width="400" height="400"></a> <br>象 <br>￥14000000</td>
+<td> <a href = "goods.html"><img th:src = "@{/images/elephant.png}" alt = "商品詳細ページへ" width="400" height="400"></a> <br>象 <br>￥14000000</td>
 </tr>
 
 <tr>
-<td> <a href = "goods.html"><img src = "pan.jpg" alt = "商品詳細ページへ" width="400" height="400"></a> <br>高級食パン <br>￥980</td>
+<td> <a href = "goods.html"><img th:src = "@{/images/pan.jpg}" alt = "商品詳細ページへ" width="400" height="400"></a> <br>高級食パン <br>￥980</td>
 
-<td> <a href = "goods.html"><img src = "aomusi.jpg" alt = "商品詳細ページへ" width="400" height="400"></a> <br>いっしょにあちこち！はらぺこあおむし <br>￥2980</td>
+<td> <a href = "goods.html"><img th:src = "@{/images/aomusi.jpg}" alt = "商品詳細ページへ" width="400" height="400"></a> <br>いっしょにあちこち！はらぺこあおむし <br>￥2980</td>
 
-<td> <a href = "goods.html"><img src = "paguland.jpg" alt = "商品詳細ページへ" width="400" height="400"></a> <br>ぱぐらんど　Tシャツ <br>￥390</td>
+<td> <a href = "goods.html"><img th:src = "@{/images/paguland.jpg}" alt = "商品詳細ページへ" width="400" height="400"></a> <br>ぱぐらんど　Tシャツ <br>￥390</td>
 </tr>
 </table>
 

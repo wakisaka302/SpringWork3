@@ -138,5 +138,7 @@ public class UserController {
 		//UserService.userEntry(UserRequest);
 		return "redirect:/goods/top";
 	}
+	
+	
 
 }
