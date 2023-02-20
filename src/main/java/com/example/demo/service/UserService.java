@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.UserRequest;
+import com.example.demo.entity.Goods;
 import com.example.demo.entity.UserInfo;
 import com.example.demo.repository.UserMapper;
 
@@ -24,7 +25,13 @@ public class UserService {
 		userinfo.setCredit( userRequest.getCredit());
 		repository.userInsert(userinfo);
 	}
-
+	
+	
+	
+	//商品詳細をselect
+	public Goods getGoodsDetail(Integer goods_id){
+		return repository.selectGoods(goods_id);
+	}
 
 	
 	

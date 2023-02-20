@@ -15,13 +15,39 @@
 	</select>
 	
 	
-	
-	
+	 <!-- 新規登録 -->
 	<insert id="userInsert">
 	INSERT INTO userinfo (pw,name,birth,address,mail,credit) values (#{pw},#{name},#{birth},#{address},#{mail},#{credit})
 	</insert>
 	
+	
+	
+<!-- ここからGoodsテーブル -->
+	<resultMap id="GoodsMap" type="jp.co.trainocamp.demo.mybatis.entity.Goods">
+		<result column="goods_id" jdbcType="INTEGER" property="goods_id" />
+		<result column="goods_name" jdbcType="VARCHAR" property="goods_name"/>
+		<result column="stock" jdbcType="INTEGER" property="stock" />
+		<result column="price" jdbcType="INTEGER" property="price" />
+		<result column="detail" jdbcType="VARCHAR" property="detail" />
+	</resultMap>
+	
+	<!-- 商品詳細をselect -->
+	<select id="selectGoods" resultMap="GoodsMap">
+	SELECT goods_name, stock, price, detail FROM goods where goods_id = {#goods_id}
+	</select>
+	
+	
+	
+	
+	
+	
+	
 </mapper>
+
+
+
+
+
 
 
 
