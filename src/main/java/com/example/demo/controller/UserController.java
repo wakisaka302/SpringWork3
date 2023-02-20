@@ -108,8 +108,9 @@ public class UserController {
 	 * @return 商品詳細情報画面
 	 */
 	@GetMapping(value = "/goods/goods/{id}")
-	public String displayGoods(@PathVariable Long id, Model model) {
-//		List<Goods> goods = UserService.getGoodsDetail(id);
+	public String displayGoods(@PathVariable String id, Model model) {
+//		Integer Id = Integer.parseInt(id);
+//		List<Goods> goods = UserService.getGoodsDetail(Id);
 //		model.addAttribute("goods", goods);
 		return "goods/goods";
 	}
