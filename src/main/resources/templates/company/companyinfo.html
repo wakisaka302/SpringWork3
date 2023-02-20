@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="common/head :: head_fragment(title = '会社概要', scripts = ~{::script}, links = ~{::link})">
+
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>会社概要</title>
 </head>
 <body>
-
+	<div th:include="common/head :: frag_body"></div>
+	<!-- th:include="ファイル名 :: フラグメント名" -->
+	
+	<div class="container">
+	<h1>会社概要</h1>
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<th>会社名</th>
+					<td>株式会社Spring（Spring Corporation）</td>
+				</tr>
+				<tr>
+					<th>取締役</th>
+					<td>田原 周和</td>
+				</tr>
+				<tr>
+					<th>設立</th>
+					<td>2023年2月1日</td>
+				</tr>
+				<tr>
+					<th>資本金</th>
+					<td>3億円</td>
+				</tr>
+				<tr>
+					<th>住所</th>
+					<td>〒111-222 谷畑さんのご自宅</td>
+				</tr>
+				<tr>
+					<th>TEL</th>
+					<td>090-1111-2222</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- Content here -->
+	</div>
 </body>
 </html>
