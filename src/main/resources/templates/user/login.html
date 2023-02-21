@@ -11,99 +11,100 @@
 	crossorigin="anonymous">
 <meta charset="UTF-8">
 <style type="text/css">
-
 body {
-  background-color: #808080;
+	background-color: #808080;
 }
 
 form {
-  width: 800px;
-  padding: 40px 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  background-color: #000;
-  text-align: center;
+	width: 800px;
+	padding: 40px 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #000;
+	text-align: center;
 }
 
-form h1,form p {
-  color: white;
-  font-weight: 500;
+form h1, form p {
+	color: white;
+	font-weight: 500;
 }
 
 form p {
-  font-size: 10px;
+	font-size: 10px;
 }
 
-form input[type = "id"],form input[type = "password"] {
-  border: 0;
-  background: none;
-  display: block;
-  margin: 20px auto;
-  border: 2px solid #dbd639;
-  padding: 15px 10px;
-  width: 200px;
-  outline: none;
-  border-radius: 24px;
-  transition: 0.25s;
-  text-align: center;
+form input[type="id"], form input[type="password"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	border: 2px solid #dbd639;
+	padding: 15px 10px;
+	width: 200px;
+	outline: none;
+	border-radius: 24px;
+	transition: 0.25s;
+	text-align: center;
 }
 
-form input[type = "id"]:focus,form input[type = "password"]:focus {
-  width: 280px;
-  background-color: #f0f8ff;
+form input[type="id"]:focus, form input[type="password"]:focus {
+	width: 280px;
+	background-color: #f0f8ff;
 }
 
-form input[type = "submit"]{
-  border: 0;
-  background: none;
-  display: block;
-  margin: 20px auto;
-  border: 2px solid #f0f8ff;
-  padding: 15px 10px;
-  width: 200px;
-  outline: none;
-  color: white;
-  border-radius: 25px;
-  transition: 0.25s;
-  text-align: center;
-  cursor: pointer;
+form input[type="submit"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	border: 2px solid #f0f8ff;
+	padding: 15px 10px;
+	width: 200px;
+	outline: none;
+	color: white;
+	border-radius: 25px;
+	transition: 0.25s;
+	text-align: center;
+	cursor: pointer;
 }
 
-form input[type = "submit"]:hover {
-  background-color: #dbd639;
-  border: 2px solid #dbd639;
+form input[type="submit"]:hover {
+	background-color: #dbd639;
+	border: 2px solid #dbd639;
 }
 </style>
 <body>
 	<!--<div class="container" style="background:#eeeeee;">-->
 
-		
-		<form name="login_form">
-			<div class="login_form_top">
-				<h1>ログイン画面</h1>
-				<p>メールアドレス、パスワードをご入力の上、「ログイン」ボタンをクリック\nまたは、新規登録</p>
-			</div>
-			<div class="login_form_btm">
-				<input type="id" name="user_id" placeholder="メールアドレスを入力してください"><br>
-				<input type="password" name="password" placeholder="パスワードを入力してください">
-			</div>
-			<button type="submit"class="btn btn-primary">ログイン</button>
-			<button type="button" class="btn btn-secondary">新規登録</button>
-		</form>
-		
-		<form name="login_form">
-      <div class="login_form_top">
-        <h1>LOGIN</h1>
-        <p>Mail、Passwordをご入力の上、「LOGIN」ボタンをクリックして下さい。</p>
-      </div>
-      <div class="login_form_btm">
-        <input type="id" name="user_id" placeholder="Mail">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit" name="botton" value="LOGIN"> <input type="submit" name="botton" value="新規登録はこちら">
-      </div>
-    </form>
-	</div>
+	<div th:include="common/head :: frag_body"></div>
+	<!-- th:include="ファイル名 :: フラグメント名" -->
+
+	<form name="login_form">
+		<div class="login_form_top">
+			<h1>ログイン画面</h1>
+			<p>メールアドレス、パスワードをご入力の上、「ログイン」ボタンをクリック\nまたは、新規登録</p>
+		</div>
+		<div class="login_form_btm">
+			<input type="id" name="user_id" placeholder="メールアドレスを入力してください"><br>
+			<input type="password" name="password" placeholder="パスワードを入力してください">
+		</div>
+		<button type="submit" class="btn btn-primary">ログイン</button>
+		<a th:href="@{/user/add}" class="btn btn-secondary">新規登録</a>
+	</form>
+
+	<!--<form name="login_form">
+		<div class="login_form_top">
+			<h1>LOGIN</h1>
+			<p>Mail、Passwordをご入力の上、「LOGIN」ボタンをクリックして下さい。</p>
+		</div>
+		<div class="login_form_btm">
+			<input type="id" name="user_id" placeholder="Mail"> <input
+				type="password" name="password" placeholder="Password"> <input
+				type="submit" name="botton" value="LOGIN"> <input
+				type="submit" name="botton" value="新規登録はこちら">
+		</div>
+	</form> -->
 
 </body>

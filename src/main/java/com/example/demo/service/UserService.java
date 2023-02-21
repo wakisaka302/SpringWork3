@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +19,30 @@ public class UserService {
 
 	//会員情報登録
 	public void userEntry(UserRequest userRequest){
+		
+		System.out.println("c");
+		
 		UserInfo userinfo = new UserInfo();
 		userinfo.setPw(userRequest.getPw());
 		userinfo.setName(userRequest.getName());
-		userinfo.setBirth(userRequest.getBirth());
+		
+		System.out.println(userRequest.getBirth());
+		
+		Date birthDate = Date.valueOf(userRequest.getBirth());
+		System.out.println("d");
+		
+		userinfo.setBirth(birthDate);
+		
+		System.out.println("d999");
+		
 		userinfo.setAddress(userRequest.getAddress());
 		userinfo.setMail(userRequest.getMail());
 		userinfo.setCredit( userRequest.getCredit());
+		
+		System.out.println("e");
+		
 		repository.userInsert(userinfo);
+		System.out.println("f");
 	}
 
 	//ログイン取得(boolean型で取得)

@@ -82,6 +82,7 @@ public class UserController {
 
 		return "user/login";
 	}
+	
 
 	/**
 	 * 会社概要画面を表示
@@ -127,7 +128,8 @@ public class UserController {
 	 */
 	@GetMapping(value = "/user/add")
 	public String displayAdd(Model model) {
-		//		model.addAttribute("userRequest", new UserRequest());
+		
+				model.addAttribute("userRequest", new UserRequest());
 		return "user/add";
 	}
 
@@ -139,6 +141,7 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/user/create", method = RequestMethod.POST)
 	public String create(@Validated @ModelAttribute UserRequest userRequest, BindingResult result, Model model) {
+		System.out.println("a");
 		if (result.hasErrors()) {
 			// 入力チェックエラーの場合
 			List<String> errorList = new ArrayList<String>();
@@ -149,7 +152,8 @@ public class UserController {
 			return "user/add";
 		}
 		// ユーザー情報の登録
-		//UserService.userEntry(UserRequest);
+		System.out.println("b");
+		userService.userEntry(userRequest);
 		return "redirect:/goods/top";
 	}
 	
