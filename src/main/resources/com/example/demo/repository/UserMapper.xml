@@ -18,6 +18,13 @@
 	INSERT INTO userinfo (pw,name,birth,address,mail,credit) values (#{pw},#{name},#{birth},#{address},#{mail},#{credit})
 	</insert>
 	
+	 <!-- ログイン(pwとmailを受け取って、一致するものの件数を返す) -->
+	<select id="selecLogin" resultType="_int">
+	SELECT count(*) FROM userinfo WHERE mail = #{mail} AND pw = #{pw}
+	</select>
+	
+	
+	
 	
 	
 <!-- ここからGoodsテーブル -->
