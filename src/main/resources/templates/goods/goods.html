@@ -1,61 +1,142 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="common/head :: head_fragment(title = '商品詳細', scripts = ~{::script}, links = ~{::link})">
+
 <meta charset="UTF-8">
-<title>商品詳細</title>
-<style type = "text/css">
-table{border:none;}
-h1{color:white;
-background-color:black;
-}
-body{border:5px solid black;
-}
-.right{padding-left:1200px;
-}
-.design{font-size:36px;
 
+<style type="text/css">
+
+.container {
+  width: 800px;
+  margin: 0 auto;
 }
 
+table{
+	width:750px;
+	border:none;
+	text-align:center;
+}
+
+.left_img {
+	
+}
+
+.right_text {
+	width:350px;
+    text-align: right;
+   
+}
+
+.goods_name{
+	font-size:120%;
+	color:#545454;
+	font-weight:bold;;
+}
+
+.small_font{
+	font-size:15px;
+}
+
+.goods_price{
+	color: #ff0000;
+	font-size:150%;
+	font-weight:bold;
+	padding:20px 0;
+}
 </style>
+
+
 </head>
 <body>
-<h1>商品詳細</h1>
+	<div th:include="common/head :: frag_body"></div>
+	<!-- th:include="ファイル名 :: フラグメント名" -->
+	<div class="container">
 
+		<!-- h1>商品詳細</h1 -->
 
-<table align ="center" border ="1">
-<tr>
-<td> <img src = "counter.jpg" alt = "商品詳細ページへ" width="400" height="400">
-</td>
+		<table>
+			<tbody>
+				<tr>
+					<td class="left_img"><!-- img src="../static/images/aomusi.jpg" alt="商品画像" width="400" height="400"-->
+					<!-- 画像スライショーここから -->
+					<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../static/images/aomusi_1.jpg" class="d-block w-400" alt="">
+    </div>
+    <div class="carousel-item">
+      <img src="../static/images/aomusi_2.jpg" class="d-block w-400" alt="">
+    </div>
+    <div class="carousel-item">
+      <img src="../static/images/aomusi_3.jpg" class="d-block w-400" alt="">
+    </div>
+    <div class="carousel-item">
+      <img src="../static/images/aomusi_4.jpg" class="d-block w-400" alt="">
+    </div>
+    <div class="carousel-item">
+      <img src="../static/images/aomusi_5.jpg" class="d-block w-400" alt="">
+    </div>
+    
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div><!-- 画像スライショーここまで -->
+					</td>
+					
+					<td class="right_text"><br>
+						<!-- 商品名、価格、説明文はDBからひっぱってくる -->
+						<font class="goods_name">いっしょにあちこち！はらぺこあおむし</font><br><br>
+						<font class="small_font">価格</font>
+						<font class="goods_price">2980円</font><!--DB -->
+						<font class="small_font">(税込)</font>
 
-<td class = "design"> 商品名： <br>\～ <br> <form action="https://www.shopmaker.jp/basic/order.cgi">
-  
-個数<select name="kosuu">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4">4</option>
-<option value="5">5</option>
-<option value="6">6</option>
-<option value="7">7</option>
-<option value="8">8</option>
-<option value="9">9</option>
-<option value="10">10</option>
-<option value="11">11</option>
-<option value="12">12</option>
-<option value="13">13</option>
-<option value="14">14</option>
-<option value="15">15</option>
-</select>
-<br> <input type="submit" value="購入">
-</form>
+						
+						<form action="https://www.shopmaker.jp/basic/order.cgi">
 
+							個数 <select name="kosuu">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15">15</option>
+							</select> <br><br>
+							<input class="btn btn-danger" type="submit" value="購入">
+						</form>
 
-説明文：</td>
-</tr>
-</table>
+						<!--DB -->
+						<p>商品説明文が入る</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 
-
-
-<a class= "right" href = "top.html">TOPへ戻る</a>
+		<!-- a class="right" href="top.html">TOPへ戻る</a-->
+	</div>
 </body>
 </html>
