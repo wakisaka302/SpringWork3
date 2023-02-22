@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.demo.dto.LoginRequest;
 import com.example.demo.dto.UserRequest;
 import com.example.demo.entity.Goods;
 import com.example.demo.service.UserService;
@@ -47,6 +48,7 @@ public class UserController {
 	@GetMapping(value = "/goods/goodslist")
 	public String displayGoodslist(Model model) {
 		//		List<Goods> userlist = UserService.searchAll();
+		//System.out.println(UserService.userId);
 		//		model.addAttribute("userlist", userlist);
 		return "goods/goodslist";
 	}
@@ -79,7 +81,7 @@ public class UserController {
 	 */
 	@GetMapping(value = "/user/login")
 	public String displayLogin(Model model) {
-
+		model.addAttribute("loginRequest", new LoginRequest());
 		return "user/login";
 	}
 	
@@ -141,6 +143,7 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/user/create", method = RequestMethod.POST)
 	public String create(@Validated @ModelAttribute UserRequest userRequest, BindingResult result, Model model) {
+		
 		System.out.println("a");
 		if (result.hasErrors()) {
 			// 入力チェックエラーの場合
@@ -156,6 +159,35 @@ public class UserController {
 		userService.userEntry(userRequest);
 		return "redirect:/goods/top";
 	}
+	
+	
+	//2/22追加
+	/**
+	 * ユーザーログイン
+	 * @param userRequest リクエストデータ
+	 * @param model Model
+	 * @return 成功時:TOP画面 /失敗時：ユーザー新規登録画面
+	 */
+	//アノテーションvalueのURLが未定
+	@RequestMapping(value = "/user/login_1", method = RequestMethod.POST)
+	public String login(@Validated @ModelAttribute LoginRequest loginRequest, BindingResult result, Model model) {
+
+		if (result.hasErrors()) {
+			// 入力チェックエラーの場合
+			List<String> errorList = new ArrayList<String>();
+			for (ObjectError error : result.getAllErrors()) {
+				errorList.add(error.getDefaultMessage());
+			}
+			model.addAttribute("validationError2", errorList);
+			return "user/login";
+		}
+		// ユーザーログイン認証成功
+		
+		boolean flag = userService.checkLogin(loginRequest);
+		//System.out.println(UserService.userId);
+		return "redirect:/goods/top";
+	}
+	
 	
 	
 

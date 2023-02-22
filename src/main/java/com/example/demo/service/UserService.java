@@ -16,6 +16,7 @@ import com.example.demo.repository.UserMapper;
 public class UserService {
 
 	@Autowired UserMapper repository;
+	public static int userId = 0;
 
 	//会員情報登録
 	public void userEntry(UserRequest userRequest){
@@ -47,7 +48,8 @@ public class UserService {
 
 	//ログイン取得(boolean型で取得)
 	public boolean checkLogin(LoginRequest loginRequest){
-		if (repository.selectLogin(loginRequest)>0) {
+		userId = repository.selectLogin(loginRequest);
+		if (userId>0) {
 			return true;
 		} else {
 			return false;

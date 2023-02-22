@@ -20,7 +20,7 @@
 </style>
 </head>
 <body>
-<div th:include="common/head :: frag_body"></div>
+	<div th:include="common/head :: frag_body"></div>
 	<!-- th:include="ファイル名 :: フラグメント名" -->
 	<div class="container">
 		<div th:if="${validationError}" th:each="error : ${validationError}">

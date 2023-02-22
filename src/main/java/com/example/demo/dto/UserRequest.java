@@ -20,7 +20,7 @@ public class UserRequest implements Serializable {
   /**
    * 生年月日
    */
-  @Length(min =8 ,max = 8, message = "誕生日は10桁以内で入力してください")
+  @Length(min = 10,max = 10, message = "誕生日は10桁以内で入力してください")
   private String birth;
   /**
    * 住所
