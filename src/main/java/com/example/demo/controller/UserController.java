@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.dto.LoginRequest;
+import com.example.demo.dto.OrderNum;
 import com.example.demo.dto.UserRequest;
 import com.example.demo.entity.Goods;
 import com.example.demo.service.UserService;
@@ -120,6 +121,35 @@ public class UserController {
 		return "goods/goods";
 	}
 	
+	
+	
+	//2/24追加
+	@RequestMapping(value = "/goods/purchased_1", method = RequestMethod.POST)
+	public String purchasedComplete(@Validated @ModelAttribute OrderNum orderNum, BindingResult result, Model model) {
+		System.out.println(orderNum.getOrderNum());
+		System.out.println(orderNum.getGoods_id());
+		
+//		if (result.hasErrors()) {
+//			// 入力チェックエラーの場合
+//			List<String> errorList = new ArrayList<String>();
+//			for (ObjectError error : result.getAllErrors()) {
+//				errorList.add(error.getDefaultMessage());
+//			}
+//			model.addAttribute("validationError2", errorList);
+//			return "user/login";
+//		}
+//		// ユーザーログイン認証成功
+//		
+//		boolean flag = userService.checkLogin(loginRequest);
+//		//System.out.println(UserService.userId);
+		return "goods/purchased";
+	}
+	
+
+	
+	
+	
+	
 
 	//ログイン・会員登録画面の
 	//新規会員登録をクリックした場合動作
@@ -143,8 +173,6 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/user/create", method = RequestMethod.POST)
 	public String create(@Validated @ModelAttribute UserRequest userRequest, BindingResult result, Model model) {
-		
-		System.out.println("a");
 		if (result.hasErrors()) {
 			// 入力チェックエラーの場合
 			List<String> errorList = new ArrayList<String>();
@@ -155,7 +183,6 @@ public class UserController {
 			return "user/add";
 		}
 		// ユーザー情報の登録
-		System.out.println("b");
 		userService.userEntry(userRequest);
 		return "redirect:/goods/top";
 	}
