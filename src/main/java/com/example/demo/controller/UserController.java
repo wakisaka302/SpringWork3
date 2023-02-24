@@ -23,6 +23,10 @@ import com.example.demo.service.UserService;
 
 @Controller
 public class UserController {
+	boolean flag;
+	int user_id;
+	
+	
 
 		@Autowired
 		UserService userService;
@@ -210,8 +214,11 @@ public class UserController {
 		}
 		// ユーザーログイン認証成功
 		
-		boolean flag = userService.checkLogin(loginRequest);
-		//System.out.println(UserService.userId);
+		flag = userService.checkLogin(loginRequest);
+		user_id = UserService.userId;
+		System.out.println(user_id);
+		
+		
 		return "redirect:/goods/top";
 	}
 	

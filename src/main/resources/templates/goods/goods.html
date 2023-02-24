@@ -128,12 +128,12 @@ table {
 								class="small_font">円</font>
 							<!--DB -->
 							<font class="small_font">(税込)</font>
-							<form action="https://www.shopmaker.jp/basic/order.cgi" th:action="@{/goods/purchased_1}" th:object="${orderNum}" th:method="post" >
+							<form  th:action="@{/goods/purchased_1}" th:object="${orderNum}" th:method="post" >
 								<label for="orderNum">個数:</label> <select id="orderNum"  name="orderNum">
 									<option th:each="i : ${#numbers.sequence(0, goods.stock)}"
 										th:value="${i}" th:text="${i}">個</option>
 								</select>
-							<input type="hidden" name="goods_id" th:value="${goods_id}">
+							<input type="hidden" th:field="${goods.goods_id}" >
 							<input type="submit" value="　購入　" class="btn btn-primary">
 							
 							</form>
