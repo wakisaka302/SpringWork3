@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.LoginRequest;
+import com.example.demo.dto.OrderRequest;
 import com.example.demo.dto.UserRequest;
 import com.example.demo.entity.Goods;
+import com.example.demo.entity.Sales;
 import com.example.demo.entity.UserInfo;
 import com.example.demo.repository.UserMapper;
 
@@ -52,5 +54,22 @@ public class UserService {
 	}
 
 
+	//商品購入時
+	public void salesInsert(OrderRequest orderRequest){
+		Sales sales = new Sales();
+		sales.setUser_id(orderRequest.getUser_id());
+		sales.setGoods_id(orderRequest.getGoods_id());
+		
+		
+//		sales.getOrder_date();
+//		
+//		sales.user_id = orderRequest.getUser_id();
+//		sales.goods_id = orderRequest.getGoods_id(); 
+//		sales.order_num = orderRequest.getOrder_num();
+//		sales.total = sales.order_num * getGoodsPrice;	
+//	repository.salesSave();
+	}
+
+	
 
 }

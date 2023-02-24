@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.dto.LoginRequest;
-import com.example.demo.dto.OrderNum;
+import com.example.demo.dto.OrderRequest;
 import com.example.demo.dto.UserRequest;
 import com.example.demo.entity.Goods;
 import com.example.demo.service.UserService;
 
 @Controller
 public class UserController {
-	boolean flag;
+	boolean flag = false;
 	int user_id;
 	
 	
@@ -52,10 +52,7 @@ public class UserController {
 	 */
 	@GetMapping(value = "/goods/goodslist")
 	public String displayGoodslist(Model model) {
-		//		List<Goods> userlist = UserService.searchAll();
-		//System.out.println(UserService.userId);
-		//		model.addAttribute("userlist", userlist);
-		return "goods/goodslist";
+			return "goods/goodslist";
 	}
 
 	/**
@@ -63,8 +60,15 @@ public class UserController {
 	 * @param model Model
 	 * @return 会員情報画面
 	 */
-	@GetMapping(value = "/user/{id}")
+	@GetMapping(value = "/user/view")
 	public String displayView(@PathVariable Long id, Model model) {
+		if(flag) {
+			model.addAttribute("loginRequest", new LoginRequest());
+			return "user/login";
+//			return "user/view";
+		}
+		
+		
 		//		Userinfo user = UserService.getUserInfo(id);
 		//      if(user.userid =!= null){
 		//		model.addAttribute("userData", user);
@@ -76,7 +80,8 @@ public class UserController {
 		//		return "goods/top";
 		//	}
 		//		
-		return "user/view";
+		model.addAttribute("loginRequest", new LoginRequest());
+		return "user/login";
 	}
 
 	/**
@@ -128,25 +133,26 @@ public class UserController {
 	
 	
 	//2/24追加
+	/**
+	 * 購入画面(ログイン中なら購入完了画面、未ログインならログイン画面に遷移)
+	 * @param model Model
+	 * @return 商品詳細情報画面
+	 */
 	@RequestMapping(value = "/goods/purchased_1", method = RequestMethod.POST)
-	public String purchasedComplete(@Validated @ModelAttribute OrderNum orderNum, BindingResult result, Model model) {
-		System.out.println(orderNum.getOrderNum());
-		System.out.println(orderNum.getGoods_id());
-		
-//		if (result.hasErrors()) {
-//			// 入力チェックエラーの場合
-//			List<String> errorList = new ArrayList<String>();
-//			for (ObjectError error : result.getAllErrors()) {
-//				errorList.add(error.getDefaultMessage());
-//			}
-//			model.addAttribute("validationError2", errorList);
-//			return "user/login";
-//		}
-//		// ユーザーログイン認証成功
-//		
-//		boolean flag = userService.checkLogin(loginRequest);
-//		//System.out.println(UserService.userId);
-		return "goods/purchased";
+	public String purchasedComplete(@Validated @ModelAttribute OrderRequest orderRequest, BindingResult result, Model model) {
+		if(flag) {
+			orderRequest.setUser_id(user_id);;
+			model.addAttribute("orderRequest", orderRequest);
+			System.out.println(orderRequest.getUser_id());
+			System.out.println(orderRequest.getGoods_id());
+			System.out.println(orderRequest.getPrice());
+			System.out.println(orderRequest.getOrderNum());
+			
+			
+			return "goods/purchased";
+		}
+		model.addAttribute("loginRequest", new LoginRequest());
+		return "user/login";
 	}
 	
 
