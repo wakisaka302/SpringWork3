@@ -19,8 +19,8 @@
 	</insert>
 	
 	 <!-- ログイン(pwとmailを受け取って、一致するものの件数を返す) -->
-	<select id="selecLogin" resultType="_int">
-	SELECT count(*) FROM userinfo WHERE mail = #{mail} AND pw = #{pw}
+	<select id="selectLogin" resultType="Integer">
+	SELECT user_id FROM userinfo WHERE mail = #{mail} AND pw = #{pw}
 	</select>
 	
 	

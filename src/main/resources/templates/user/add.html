@@ -20,6 +20,8 @@
 </style>
 </head>
 <body>
+	<div th:include="common/head :: frag_body"></div>
+	<!-- th:include="ファイル名 :: フラグメント名" -->
 	<div class="container">
 		<div th:if="${validationError}" th:each="error : ${validationError}">
 			<label class="text-danger" th:text="${error}"></label>
@@ -33,7 +35,7 @@
 			</div>
 			<div class="form-group">
 				<label><span class="mgr-43">生年月日 </span>：</label> <input type="text"
-					th:field="*{name}" class="form-control">
+					th:field="*{birth}" class="form-control">
 			</div>
 			<div class="form-group">
 				<label><span class="mgr-75">住所 </span>：</label> <input type="text"
@@ -41,21 +43,21 @@
 			</div>
 			<div class="form-group">
 				<label><span class="">メールアドレス</span>：</label> <input type="text"
-					th:field="*{phone}" class="form-control">※
+					th:field="*{mail}" class="form-control">※
 			</div>
 			<div class="form-group">
 				<label><span class="mgr-27">クレジット </span>：</label> <input
-					type="text" th:field="*{phone}" class="form-control">※
+					type="text" th:field="*{credit}" class="form-control">※
 			</div>
 			<div class="form-group">
 				<label><span class="mgr-27">パスワード </span>：</label> <input
-					type="text" th:field="*{address}" class="form-control">※
+					type="text" th:field="*{pw}" class="form-control">※
 			</div>
 
 			<br />
 
 			<div class="text-center">
-				(※は必須項目です。)<a href="/user/list" class="btn btn-secondary">キャンセル</a>
+				(※は必須項目です。)<a href="/user/login" class="btn btn-secondary">キャンセル</a>
 				<input type="submit" value="　登録　" class="btn btn-primary">
 
 			</div>

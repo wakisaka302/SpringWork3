@@ -4,106 +4,155 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head
 	th:replace="common/head :: head_fragment(title = 'ユーザー新規登録', scripts = ~{::script}, links = ~{::link})">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
+
 <meta charset="UTF-8">
 <style type="text/css">
+.mgr-75 {
+	margin-right: 75px;
+}
 
+.mgr-27 {
+	margin-right: 27px;
+}
+
+.mgr-43 {
+	margin-right: 43px;
+}
+</style>
+</head>
+<!-- 
+<style type="text/css">
 body {
-  background-color: #808080;
+	background-color: #808080;
 }
 
 form {
-  width: 800px;
-  padding: 40px 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  background-color: #000;
-  text-align: center;
+	width: 800px;
+	padding: 40px 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #000;
+	text-align: center;
 }
 
-form h1,form p {
-  color: white;
-  font-weight: 500;
+form h1, form p {
+	color: white;
+	font-weight: 500;
 }
 
 form p {
-  font-size: 10px;
+	font-size: 10px;
 }
 
-form input[type = "id"],form input[type = "password"] {
-  border: 0;
-  background: none;
-  display: block;
-  margin: 20px auto;
-  border: 2px solid #dbd639;
-  padding: 15px 10px;
-  width: 200px;
-  outline: none;
-  border-radius: 24px;
-  transition: 0.25s;
-  text-align: center;
+form input[type="id"], form input[type="password"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	border: 2px solid #dbd639;
+	padding: 15px 10px;
+	width: 200px;
+	outline: none;
+	border-radius: 24px;
+	transition: 0.25s;
+	text-align: center;
 }
 
-form input[type = "id"]:focus,form input[type = "password"]:focus {
-  width: 280px;
-  background-color: #f0f8ff;
+form input[type="id"]:focus, form input[type="password"]:focus {
+	width: 280px;
+	background-color: #f0f8ff;
 }
 
-form input[type = "submit"]{
-  border: 0;
-  background: none;
-  display: block;
-  margin: 20px auto;
-  border: 2px solid #f0f8ff;
-  padding: 15px 10px;
-  width: 200px;
-  outline: none;
-  color: white;
-  border-radius: 25px;
-  transition: 0.25s;
-  text-align: center;
-  cursor: pointer;
+form input[type="submit"] {
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	border: 2px solid #f0f8ff;
+	padding: 15px 10px;
+	width: 200px;
+	outline: none;
+	color: white;
+	border-radius: 25px;
+	transition: 0.25s;
+	text-align: center;
+	cursor: pointer;
 }
 
-form input[type = "submit"]:hover {
-  background-color: #dbd639;
-  border: 2px solid #dbd639;
+form input[type="submit"]:hover {
+	background-color: #dbd639;
+	border: 2px solid #dbd639;
 }
 </style>
+
+ -->
+
 <body>
 	<!--<div class="container" style="background:#eeeeee;">-->
 
-		
-		<form name="login_form">
-			<div class="login_form_top">
-				<h1>ログイン画面</h1>
-				<p>メールアドレス、パスワードをご入力の上、「ログイン」ボタンをクリック\nまたは、新規登録</p>
+	<div th:include="common/head :: frag_body"></div>
+	<!-- th:include="ファイル名 :: フラグメント名" -->
+
+	<div class="container">
+	
+		<div th:if="${validationError2}" th:each="error : ${validationError2}">
+			<label class="text-danger" th:text="${error}"></label>
+		</div>
+		 
+		<h1>ログイン画面</h1>
+		<form th:action="@{/user/login_1}" th:object="${loginRequest}"
+			th:method="post">
+			<div class="form-group">
+				<label><span class="">メールアドレス</span>：</label> 
+				<input type="text" th:field="*{mail}" class="form-control">※
 			</div>
-			<div class="login_form_btm">
-				<input type="id" name="user_id" placeholder="メールアドレスを入力してください"><br>
-				<input type="password" name="password" placeholder="パスワードを入力してください">
+			<div class="form-group">
+				<label><span class="mgr-27">パスワード </span>：</label>
+				<input type="text" th:field="*{pw}" class="form-control">※
 			</div>
-			<button type="submit"class="btn btn-primary">ログイン</button>
-			<button type="button" class="btn btn-secondary">新規登録</button>
+
+			<br />
+
+			<div class="text-center">
+				(※は必須項目です。)<a th:href="@{/user/add}" class="btn btn-secondary">新規登録</a>
+				<input type="submit" value="　ログイン　" class="btn btn-primary">
+
+			</div>
 		</form>
-		
-		<form name="login_form">
-      <div class="login_form_top">
-        <h1>LOGIN</h1>
-        <p>Mail、Passwordをご入力の上、「LOGIN」ボタンをクリックして下さい。</p>
-      </div>
-      <div class="login_form_btm">
-        <input type="id" name="user_id" placeholder="Mail">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit" name="botton" value="LOGIN"> <input type="submit" name="botton" value="新規登録はこちら">
-      </div>
-    </form>
 	</div>
+ 
+	<!--  
+	<form name="login_form" th:action="@{/user/login_1}" th:object="${LoginRequest}" method="post" >
+		<div class="login_form_top">
+			<h1>ログイン画面</h1>
+			<p>メールアドレス、パスワードをご入力の上、「ログイン」ボタンをクリック\nまたは、新規登録</p>
+		</div>
+		<div class="login_form_btm">
+			<input type="id" name="user_id" placeholder="メールアドレスを入力してください"><br>
+			<input type="password" name="password" placeholder="パスワードを入力してください">
+		</div>
+		<button type="submit" class="btn btn-primary">ログイン</button>
+		<a th:href="@{/user/add}" class="btn btn-secondary">新規登録</a>
+	</form>
+	-->
+
+
+	<!--　↑新規登録はformの中でいいのか？　-->
+
+	<!--<form name="login_form">
+		<div class="login_form_top">
+			<h1>LOGIN</h1>
+			<p>Mail、Passwordをご入力の上、「LOGIN」ボタンをクリックして下さい。</p>
+		</div>
+		<div class="login_form_btm">
+			<input type="id" name="user_id" placeholder="Mail"> <input
+				type="password" name="password" placeholder="Password"> <input
+				type="submit" name="botton" value="LOGIN"> <input
+				type="submit" name="botton" value="新規登録はこちら">
+		</div>
+	</form> -->
 
 </body>
+</html>
