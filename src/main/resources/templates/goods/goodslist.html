@@ -16,6 +16,7 @@ span{color:red;}
 </head>
 <body>
 <div th:include="common/head :: frag_body"></div>
+<div class = "container">
 <h1>商品一覧</h1>
 <table align ="center" border ="1">
 <tr>
@@ -35,7 +36,7 @@ span{color:red;}
 <td> <a th:href = "@{/goods/goods/{id}(id=4)}"><img th:src = "@{/images/paguland.jpg}" alt = "商品詳細ページへ" width="400" height="400"></a> <br>ぱぐらんど　Tシャツ <br><span>￥390</span></td>
 </tr>
 </table>
-
+</div>
 
 
 
