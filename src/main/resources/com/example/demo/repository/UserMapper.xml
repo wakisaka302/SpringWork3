@@ -99,11 +99,10 @@
 
 
 	<select id="userSalesRecordSelect" resultMap="UserSalesMap">
-		SELECT * 
-		FROM usersales 
+		SELECT sales.order_date, goods.goods_name, goods.price, sales.order_num, sales.total 
+		FROM sales 
 		JOIN goods ON sales.goods_id = goods.goods_id 
-		AND JOIN userinfoON sales.user_id = userinfo.user_id
-		WHERE userinfo.user_id = #{user_id}
+		WHERE sales.user_id = #{user_id}
 	</select>
 
 

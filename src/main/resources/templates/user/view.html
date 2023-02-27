@@ -70,13 +70,16 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="sales : ${saleslist}" th:object="${sales}"
+					<tr th:each="sales : ${userSales}" th:object="${userSales}"
 						class="align-middle">
-						<td th:text="${#dates.format(user.order_date, 'yyyy/MM/dd')}"></td>
-						<td th:text="*{goods_name}"></td>
-						<td th:text="*{price}"></td>
-						<td th:text="*{order_num}"></td>
-						<td th:text="*{total}"></td>
+						<!-- 
+						<td th:text="*{order_date}"></td>
+						 -->
+						 <td th:text="${#dates.format(sales.order_date,'yyyy/MM/dd')}"></td>
+						<td th:text="${sales.goods_name}"></td>
+						<td th:text="${sales.price}"></td>
+						<td th:text="${sales.order_num}"></td>
+						<td th:text="${sales.total}"></td>
 
 					</tr>
 				</tbody>
