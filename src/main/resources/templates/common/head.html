@@ -12,6 +12,10 @@
 <meta charset="UTF-8">
 <title th:text="${title}"></title>
 <style type="text/css">
+.container {
+	width: 100%;
+	margin: 0 auto;
+}
 .logo {
 	margin-bottom: 20px;
 }
@@ -26,6 +30,7 @@
 </style>
 </head>
 <body>
+	<div class="container">
 	<!-- 以下ピカチュウ -->
 	<div th:fragment="frag_body"><!-- th:fragment="フラグメント名" -->
 	<img th:src="@{/images/pika1.gif}" width="80" height="80" />
@@ -77,6 +82,7 @@
 		}
 	</script>
 	<div class="logo"></div>
+	</div>
 	</div>
 </body>
 </html>
