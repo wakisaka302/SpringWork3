@@ -15,11 +15,12 @@
 <meta charset="UTF-8">
 <title th:text="${title}"></title>
 <style type="text/css">
-.inner {
-	width: 1200px;
-	max-width: 100%;
+#header {
+	width:100%;
 	margin: 0 auto;
+	text-align : center;
 }
+
 
 .logo {
 	margin-bottom: 20px;
@@ -35,15 +36,12 @@
 </style>
 </head>
 <body>
-
-	<div class="inner">
-
 		<!-- 以下ピカチュウ -->
 		<div th:fragment="frag_body">
+			<div id="header">
 			<!-- th:fragment="フラグメント名" -->
-			<img th:src="@{/images/pika1.gif}" width="80" height="80" /> <a
-				href="" onclick="ShowAlart()"><img
-				th:src="@{/images/pika_click.gif}" alt="" width="80" height="80"></a>
+			<img th:src="@{/images/pika1.gif}" width="80" height="80" />
+			<a href="" onclick="ShowAlart()"><img th:src="@{/images/pika_click.gif}" alt="" width="80" height="80"></a>
 			<a href="aka.png" class="example"> <img th:src="@{/images/aka.png}" width="80" height="80"></a>
 				<img th:src="@{/images/ao.png}" width="80" height="80" />
 				<img th:src="@{/images/midori.png}" width="80" height="80" />
@@ -62,7 +60,7 @@
 						aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
 						<ul class="nav nav-pills nav-fill">
 							<li class="nav-item"><a class="nav-link" aria-current="page"
 								th:href="@{/goods/top}">TOP</a></li>
@@ -75,13 +73,12 @@
 							<li class="nav-item"><a class="nav-link"
 								th:href="@{/company/companyinfo}">会社概要</a></li>
 							<li class="nav-item"><a class="nav-link"
-								th:href="@{/company/qa}">Q&A</a></li>
+								th:href="@{/company/qa}">Q&amp;A</a></li>
 						</ul>
 					</div>
 				</div>
 
 			</nav>
-
 
 			<script>
 				function ShowAlart() {
@@ -91,7 +88,7 @@
 			
 			<div class="logo"></div>
 		</div>
-	</div>
+		</div>
 
 </body>
 </html>
