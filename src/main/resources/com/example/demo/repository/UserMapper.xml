@@ -38,7 +38,7 @@
 	
 	<!-- 商品詳細をselect -->
 	<select id="selectGoods" resultMap="GoodsMap">
-	SELECT goods_id,goods_name, stock, price, detail FROM goods where goods_id = #{goods_id}
+	SELECT goods_id,goods_name, stock, price, detail FROM goods WHERE goods_id = #{goods_id}
 	</select>
 	
 	

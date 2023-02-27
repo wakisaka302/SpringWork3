@@ -13,14 +13,17 @@ public interface UserMapper {
 	void userInsert(UserInfo userinfo); 
 	
 	
-	//商品詳細をselect
-	Goods selectGoods(Integer goods_id);
+	
 	
 	
 	//ログイン取得(取得件数を返す)
 	int selectLogin(LoginRequest loginRequest);
 
 	
+	
+	
+	//商品詳細をselect
+	Goods selectGoods(Integer goods_id);
 	
 	
 	
