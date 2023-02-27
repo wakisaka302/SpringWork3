@@ -4,10 +4,10 @@
 <head
 	th:replace="common/head :: head_fragment(title = '会員情報', scripts = ~{::script}, links = ~{::link})"></head>
 <body>
-<div th:include="common/head :: frag_body"></div>
+	<div th:include="common/head :: frag_body"></div>
 	<div class="container">
 		<h1>会員情報</h1>
-		<div th:object="${userData}">
+		 <div th:object="${userData}">
 			<div class="row mx-md-n5">
 				<div class="col-2 pt-3 border bg-light">ID</div>
 				<div class="col pt-3 border">
@@ -50,38 +50,38 @@
 					<p th:text="*{credit}"></p>
 				</div>
 			</div>
-		</div>
-		<br />
-		<div class="text-center">
-		<input type="submit" value="　編集　" class="btn btn-primary">
-			
-		</div>
-		<h1>購入履歴</h1>
 
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<td>購入日</td>
-					<td>商品名</td>
-					<td>単価</td>
-					<td>個数</td>
-					<td>合計金額</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="user : ${userlist}" th:object="${user}"
-					class="align-middle">
-					<td th:text="${#dates.format(user.order_date, 'yyyy/MM/dd')}"></td>
-					<td th:text="*{goods_name}"></td>
-					<td th:text="*{price}"></td>
-					<td th:text="*{order_num}"></td>
-					<td th:text="*{total}"></td>
-					
-				</tr>
-			</tbody>
-		</table>
+			<br>
+			<div class="text-center">
+				<a href="@{/user/{id}/edit(id=*{id})}"><input type="submit"
+					value="　編集　" class="btn btn-primary"></a>
+
+			</div>
+			<h1>購入履歴</h1>
+
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<td>購入日</td>
+						<td>商品名</td>
+						<td>単価</td>
+						<td>個数</td>
+						<td>合計金額</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="sales : ${saleslist}" th:object="${sales}"
+						class="align-middle">
+						<td th:text="${#dates.format(user.order_date, 'yyyy/MM/dd')}"></td>
+						<td th:text="*{goods_name}"></td>
+						<td th:text="*{price}"></td>
+						<td th:text="*{order_num}"></td>
+						<td th:text="*{total}"></td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>
-
-
