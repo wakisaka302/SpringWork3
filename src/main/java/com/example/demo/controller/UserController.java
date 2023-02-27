@@ -60,10 +60,23 @@ public class UserController {
 	 * @param model Model
 	 * @return 会員情報画面
 	 */
+	//2/27追加
 	@GetMapping(value = "/user/view")
 	public String displayView(@PathVariable Long id, Model model) {
 		if(flag) {
 			model.addAttribute("loginRequest", new LoginRequest());
+			
+//			userService.getUserInfo(user_id);
+			//userInfoエンティティをモデルに追加
+			model.addAttribute("userInfo", userService.getUserInfo(user_id));
+			
+//			userService.getUserSales(user_id);
+			//Salesエンティティのリストをモデルに追加
+			model.addAttribute("userSales", userService.getUserSales(user_id));
+			
+			
+			
+			
 			return "user/login";
 //			return "user/view";
 		}
@@ -132,7 +145,7 @@ public class UserController {
 	
 	
 	
-	//2/24追加
+	//2/24追加, 2/27追加・修整
 	/**
 	 * 購入画面(ログイン中なら購入完了画面、未ログインならログイン画面に遷移)
 	 * @param model Model
@@ -143,12 +156,10 @@ public class UserController {
 		if(flag) {
 			orderRequest.setUser_id(user_id);;
 			model.addAttribute("orderRequest", orderRequest);
-			System.out.println(orderRequest.getUser_id());
-			System.out.println(orderRequest.getGoods_id());
-			System.out.println(orderRequest.getPrice());
-			System.out.println(orderRequest.getOrderNum());
-			
-			
+			//salesエンティティをモデルに追加
+			model.addAttribute("sales", userService.salesInsert(orderRequest));
+			//goodsエンティティをモデルに追加
+			model.addAttribute("goods", userService.getGoodsDetail(orderRequest.getGoods_id()));
 			return "goods/purchased";
 		}
 		model.addAttribute("loginRequest", new LoginRequest());
