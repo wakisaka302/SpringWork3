@@ -52,11 +52,15 @@
 			</div>
 
 			<br>
+			
+			<!-- 
 			<div class="text-center">
 				<a href="@{/user/{id}/edit(id=*{id})}"><input type="submit"
 					value="　編集　" class="btn btn-primary"></a>
 
 			</div>
+			 -->
+			
 			<h1>購入履歴</h1>
 
 			<table class="table table-striped">
@@ -70,7 +74,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="sales : ${userSales}" th:object="${userSales}"
+					<tr th:each="sales : ${userSales}" 
 						class="align-middle">
 						<!-- 
 						<td th:text="*{order_date}"></td>
