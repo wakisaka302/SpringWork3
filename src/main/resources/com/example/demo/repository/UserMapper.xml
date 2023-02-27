@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.repository.UserMapper">
-	<resultMap type="com.example.demo.entity.UserInfo" id="UserMap">
+	<resultMap type="com.example.demo.entity.UserInfo"
+		id="UserMap">
 		<result column="user_id" jdbcType="INTEGER" property="user_id" />
 		<result column="pw" jdbcType="VARCHAR" property="pw" />
 		<result column="name" jdbcType="VARCHAR" property="name" />
@@ -10,43 +11,104 @@
 		<result column="mail" jdbcType="VARCHAR" property="mail" />
 		<result column="credit" jdbcType="VARCHAR" property="credit" />
 	</resultMap>
-	
-	
-	
-	 <!-- 新規登録 -->
+
+
+
+	<!-- 新規登録 -->
 	<insert id="userInsert">
-	INSERT INTO userinfo (pw,name,birth,address,mail,credit) values (#{pw},#{name},#{birth},#{address},#{mail},#{credit})
+		INSERT INTO userinfo
+		(pw,name,birth,address,mail,credit) values
+		(#{pw},#{name},#{birth},#{address},#{mail},#{credit})
 	</insert>
-	
-	 <!-- ログイン(pwとmailを受け取って、一致するものの件数を返す) -->
+
+
+	<!-- ログイン(pwとmailを受け取って、一致するものの件数を返す) -->
 	<select id="selectLogin" resultType="Integer">
-	SELECT user_id FROM userinfo WHERE mail = #{mail} AND pw = #{pw}
+		SELECT user_id FROM userinfo
+		WHERE mail = #{mail} AND pw = #{pw}
 	</select>
-	
-	
-	
-	
-	
+
+
+	<!-- 会員情報取得 -->
+	<select id="userInfoSelect" resultMap="UserMap">
+		SELECT * FROM userinfo
+		WHERE user_id = #{user_id}
+	</select>
+
+
+
+
+
+
+
+
 <!-- ここからGoodsテーブル -->
 	<resultMap id="GoodsMap" type="com.example.demo.entity.Goods">
 		<result column="goods_id" jdbcType="INTEGER" property="goods_id" />
-		<result column="goods_name" jdbcType="VARCHAR" property="goods_name"/>
+		<result column="goods_name" jdbcType="VARCHAR"	property="goods_name" />
 		<result column="stock" jdbcType="INTEGER" property="stock" />
 		<result column="price" jdbcType="INTEGER" property="price" />
 		<result column="detail" jdbcType="VARCHAR" property="detail" />
 	</resultMap>
-	
+
 	<!-- 商品詳細をselect -->
 	<select id="selectGoods" resultMap="GoodsMap">
-	SELECT goods_id,goods_name, stock, price, detail FROM goods WHERE goods_id = #{goods_id}
+		SELECT goods_id,goods_name,
+		stock, price, detail FROM goods WHERE goods_id =
+		#{goods_id}
 	</select>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+	<!-- 在庫数をupdate -->
+	<update id="stockUpdate">
+		UPDATE goods SET stock =#{param1} where goods_id =
+		#{param2}
+	</update>
+
+
+
+
+<!-- ここからSalesテーブル -->
+	<resultMap id="SalesMap" type="com.example.demo.entity.Sales">
+		<result column="user_id" jdbcType="INTEGER" property="user_id" />
+		<result column="goods_id" jdbcType="INTEGER" property="goods_id" />
+		<result column="order_date" jdbcType="DATE" property="order_date" />
+		<result column="order_num" jdbcType="INTEGER" property="order_num" />
+		<result column="total" jdbcType="INTEGER" property="total" />
+	</resultMap>
+
+
+
+	<!-- 購入情報をinsert -->
+	<insert id="salesSave">
+		INSERT INTO sales values
+		(#{user_id},#{goods_id},#{order_date},#{order_num},#{total})
+	</insert>
+
+
+
+<!-- ここからUserSalesテーブル -->
+	<resultMap id="UserSalesMap" type="com.example.demo.entity.UserSales">
+		<result column="order_date" jdbcType="DATE" property="order_date" />
+		<result column="goods_name" jdbcType="VARCHAR"	property="goods_name" />
+		<result column="price" jdbcType="INTEGER" property="price" />
+		<result column="order_num" jdbcType="INTEGER" property="order_num" />
+		<result column="total" jdbcType="INTEGER" property="total" />
+	</resultMap>
+
+
+	<select id="userSalesRecordSelect" resultMap="UserSalesMap">
+		SELECT * 
+		FROM usersales 
+		JOIN goods ON sales.goods_id = goods.goods_id 
+		AND JOIN userinfoON sales.user_id = userinfo.user_id
+		WHERE userinfo.user_id = #{user_id}
+	</select>
+
+
+
+
 </mapper>
 
 

@@ -29,14 +29,22 @@
         </tr>
       </thead>
       <tbody>
-        <tr th:each="sales : ${userlist}" th:object="${user}" class="align-middle">
-        <td th:text="${#dates.format(user.updateDate, 'yyyy/MM/dd')}"></td>
-          <td th:text="*{goods_name}"></td>
-          <td th:text="*{price}"></td>
-          <td th:text="*{order_num}"></td>
-          <td th:text="*{total}"></td>
-          
+      <!-- 
+        <tr th:each="sales : ${userlist}" th:object="${user}" th:object="${goods}" th:object="${sales}" class="align-middle">
+        <td th:text="*{sales.order_date}"></td>
+          <td th:text="*{goods.goods_name}"></td>
+          <td th:text="*{goods.price}"></td>
+          <td th:text="*{sales.order_num}"></td>
+          <td th:text="*{sales.total}"></td>
         </tr>
+         -->
+         <tr>
+         <td th:text="*{sales.order_date}"></td>
+          <td th:text="*{goods.goods_name}"></td>
+          <td th:text="*{goods.price}"></td>
+          <td th:text="*{sales.order_num}"></td>
+          <td th:text="*{sales.total}"></td>
+         </tr>
       </tbody>
     </table>
 	</div>
