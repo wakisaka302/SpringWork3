@@ -23,6 +23,11 @@
 
 
 	<!-- ログイン(pwとmailを受け取って、一致するものの件数を返す) -->
+	<select id="getcount" resultType="Integer">
+		SELECT count(*) FROM userinfo
+		WHERE mail = #{mail} AND pw = #{pw}
+	</select>
+	
 	<select id="selectLogin" resultType="Integer">
 		SELECT user_id FROM userinfo
 		WHERE mail = #{mail} AND pw = #{pw}

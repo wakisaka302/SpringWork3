@@ -215,11 +215,16 @@ public class UserController {
 		// ユーザーログイン認証成功
 		
 		flag = userService.checkLogin(loginRequest);
-		user_id = UserService.userId;
-		System.out.println(user_id);
+		if(flag == true) {
+			user_id = UserService.userId;
+			return "redirect:/goods/top";
+		}else {
+			model.addAttribute("loginRequest", new LoginRequest());
+//			model.addAttribute("msg", "ユーザーデータが存在しません。");
+			return "user/login";
+		}
 		
 		
-		return "redirect:/goods/top";
 	}
 	
 	

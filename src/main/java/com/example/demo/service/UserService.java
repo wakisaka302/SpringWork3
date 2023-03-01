@@ -37,8 +37,12 @@ public class UserService {
 
 	//ログイン取得(boolean型で取得)
 	public boolean checkLogin(LoginRequest loginRequest){
-		userId = repository.selectLogin(loginRequest);
-		if (userId>0) {
+		int count = 0;
+		
+		count = repository.getcount(loginRequest);
+		
+		if (count>0) {
+			userId = repository.selectLogin(loginRequest);
 			return true;
 		} else {
 			return false;
