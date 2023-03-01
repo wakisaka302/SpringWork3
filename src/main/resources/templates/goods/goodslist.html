@@ -7,9 +7,9 @@
 <meta charset="UTF-8">
 
 <style type="text/css">
-ul{list-style:none;}
+/*ul{list-style:none;}
 h1{padding-left:80px;}
-/*span{color:red;}*/
+span{color:red;}*/
 
 
 </style>
@@ -18,29 +18,24 @@ h1{padding-left:80px;}
 <div th:include="common/head :: frag_body"></div>
 <div class = "container">
 <h1>商品一覧</h1>
-<table align ="center" border ="1">
+<table>
 <tr>
-<td> <a th:href = "@{/goods/goods/{id}(id=1)}"><img th:src = "@{/images/counter.jpg}" alt = "商品詳細ページへ" width="400" height="400"></a><br>勝ち勝ちくんクリア　ツインエンジェルバージョン<br><span style="color:red">￥3500</span></td>
+<td> <a th:href = "@{/goods/goods/{id}(id=1)}"><img th:src = "@{/images/counter.jpg}" alt = "商品詳細ページへ" width="400" height="400"></a><br>勝ち勝ちくんクリア　ツインエンジェルバージョン<br><span style="color:red">3,500円</span></td>
 
-<td> <a th:href = "@{/goods/goods/{id}(id=2)}"><img th:src = "@{/images/itigo.png}" alt = "商品詳細ページへ" width="400" height="400"></a><br> 苺大福 <br><span style="color:red">￥130</span></td>
+<td> <a th:href = "@{/goods/goods/{id}(id=2)}"><img th:src = "@{/images/itigo.png}" alt = "商品詳細ページへ" width="400" height="400"></a><br> 苺大福 <br><span style="color:red">130円</span></td>
 
 
-<td> <a th:href = "@{/goods/goods/{id}(id=5)}"><img th:src = "@{/images/elephant.png}" alt = "商品詳細ページへ" width="400" height="400"></a> <br>象 <br><span style="color:red">￥14000000</span></td>
+<td> <a th:href = "@{/goods/goods/{id}(id=5)}"><img th:src = "@{/images/elephant.png}" alt = "商品詳細ページへ" width="400" height="400"></a> <br>象 <br><span style="color:red">14,000,000円</span></td>
 </tr>
 
 <tr>
-<td> <a th:href = "@{/goods/goods/{id}(id=6)}"><img th:src = "@{/images/pan.jpg}" alt = "商品詳細ページへ" width="400" height="400"></a> <br>高級食パン <br><span style="color:red">￥980</span></td>
+<td> <a th:href = "@{/goods/goods/{id}(id=6)}"><img th:src = "@{/images/pan.jpg}" alt = "商品詳細ページへ" width="400" height="400"></a> <br>高級食パン <br><span style="color:red">980円</span></td>
 
-<td> <a th:href = "@{/goods/goods/{id}(id=3)}"><img th:src = "@{/images/aomusi.jpg}" alt = "商品詳細ページへ" width="400" height="400"></a> <br>いっしょにあちこち！はらぺこあおむし <br><span style="color:red">￥2980</span></td>
+<td> <a th:href = "@{/goods/goods/{id}(id=3)}"><img th:src = "@{/images/aomusi.jpg}" alt = "商品詳細ページへ" width="400" height="400"></a> <br>いっしょにあちこち！はらぺこあおむし <br><span style="color:red">2,980円</span></td>
 
-<td> <a th:href = "@{/goods/goods/{id}(id=4)}"><img th:src = "@{/images/paguland.jpg}" alt = "商品詳細ページへ" width="400" height="400"></a> <br>ぱぐらんど　Tシャツ <br><span style="color:red">￥390</span></td>
+<td> <a th:href = "@{/goods/goods/{id}(id=4)}"><img th:src = "@{/images/paguland.jpg}" alt = "商品詳細ページへ" width="400" height="400"></a> <br>ぱぐらんど　Tシャツ <br><span style="color:red">390円</span></td>
 </tr>
 </table>
 </div>
-
-
-
-
-
 </body>
 </html>
