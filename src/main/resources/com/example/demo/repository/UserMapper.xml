@@ -49,12 +49,13 @@
 		<result column="stock" jdbcType="INTEGER" property="stock" />
 		<result column="price" jdbcType="INTEGER" property="price" />
 		<result column="detail" jdbcType="VARCHAR" property="detail" />
+		<result column="image" jdbcType="VARCHAR" property="image" />		
 	</resultMap>
 
 	<!-- 商品詳細をselect -->
 	<select id="selectGoods" resultMap="GoodsMap">
 		SELECT goods_id,goods_name,
-		stock, price, detail FROM goods WHERE goods_id =
+		stock, price, detail, image FROM goods WHERE goods_id =
 		#{goods_id}
 	</select>
 

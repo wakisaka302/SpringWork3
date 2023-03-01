@@ -120,6 +120,8 @@ public class UserController {
 	@GetMapping(value = "/goods/goods/{id}")
 	public String displayGoods(@PathVariable Integer id, Model model) {
 		Goods goods = userService.getGoodsDetail(id);
+		System.out.println(goods.getImage());
+		
 		model.addAttribute("goods", goods);
 		return "goods/goods";
 	}

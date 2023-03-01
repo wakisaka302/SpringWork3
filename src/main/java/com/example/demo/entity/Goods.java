@@ -12,6 +12,7 @@ public class Goods {
 	private Integer stock;
 	private Integer price;
 	private String detail;
+	private String image;
 
 
 }
