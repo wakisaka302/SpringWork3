@@ -58,23 +58,23 @@ table {
 			<tbody>
 				<tr>
 					<td class="left_img">
-						
-							<!-- 画像表示 -->
-							<div>
-								<img th:src="*{image}" class="d-block w-100"alt="">
-							</div>
-							 <!-- 画像ここまで -->
-							 
-							<button class="carousel-control-prev" type="button"
-								data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="visually-hidden">Previous</span>
-							</button>
-							<button class="carousel-control-next" type="button"
-								data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="visually-hidden">Next</span>
-							</button>
+						<!-- 画像表示 -->
+						<div th:object="${goods}">
+							
+							<img th:src="@{|/images/${goods.image}|}" width="200" height="200" class="d-block mx-auto" th:alt="*{goods_name}" />
+							
+						</div> <!-- 画像ここまで -->
+
+						<button class="carousel-control-prev" type="button"
+							data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button"
+							data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
 					</td>
 
 
