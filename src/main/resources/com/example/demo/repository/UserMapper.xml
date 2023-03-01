@@ -104,6 +104,7 @@
 		FROM sales 
 		JOIN goods ON sales.goods_id = goods.goods_id 
 		WHERE sales.user_id = #{user_id}
+		ORDER BY sales.order_date DESC
 	</select>
 
 

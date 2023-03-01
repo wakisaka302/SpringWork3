@@ -60,10 +60,8 @@ table {
 					<td class="left_img">
 						<!-- 画像表示 -->
 						<div th:object="${goods}">
-
-							
-							<img th:src="@{|/images/${goods.image}|}" width="200" height="200" class="d-block mx-auto" th:alt="*{goods_name}" />
-							
+							<img th:src="@{|/images/${goods.image}|}" width="250"
+								height="250" class="d-block mx-auto" th:alt="*{goods_name}" />
 						</div> <!-- 画像ここまで -->
 
 						<button class="carousel-control-prev" type="button"
@@ -71,6 +69,7 @@ table {
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 							<span class="visually-hidden">Previous</span>
 						</button>
+
 						<button class="carousel-control-next" type="button"
 							data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
 							<span class="carousel-control-next-icon" aria-hidden="true"></span>
@@ -84,36 +83,34 @@ table {
 							<p th:text="*{goods_name}">
 								<font class="goods_name"></font>
 							</p>
-							<br> <br> <font class="small_font">価格</font> <font
-								class="goods_price" th:text="*{price}"></font> <font
-								class="small_font">円</font>
+							<br> <br> <span class="goods_price"><font>価格</font></span>
+							<font size="+2" color="red" th:text="*{price}"></font><font>円</font>
 							<!--DB -->
-							<font class="small_font">(税込)</font>
-							<form th:action="@{/goods/purchased_1}"
-								th:object="${orderRequest}" th:method="post">
-								<label for="orderNum">個数:</label> <select id="orderNum"
-									name="orderNum">
-									<option th:each="i : ${#numbers.sequence(0, goods.stock)}"
-										th:value="${i}" th:text="${i}">個</option>
-								</select> <input type="hidden" th:field="${goods.price}"> <input
-									type="hidden" th:field="${goods.goods_id}"> <input
-									type="submit" value="　購入　" class="btn btn-primary">
+							<font>(税込)</font>
 
-							</form>
-
-
+							<div th:if="${goods.stock} > 0">
+								<form th:action="@{/goods/purchased_1}"
+									th:object="${orderRequest}" th:method="post">
+									<label for="orderNum">個数:</label> <select id="orderNum"
+										name="orderNum">
+										<option th:each="i : ${#numbers.sequence(1, goods.stock)}"
+											th:value="${i}" th:text="${i}">個</option>
+									</select> <input type="hidden" th:field="${goods.price}"> <input
+										type="hidden" th:field="${goods.goods_id}"> <input
+										type="submit" value="　購入　" class="btn btn-primary">
+								</form>
+							</div>
+							<div th:if="${goods.stock} <= 0">
+								<p>
+									<font size="+2" style="color: red">在庫なし</font>
+								</p>
+							</div>
 							<!--DB -->
 							<p th:text="*{detail}"></p>
-
-
 						</div></td>
-
-
 				</tr>
-
 			</tbody>
 		</table>
-
 		<!-- a class="right" href="top.html">TOPへ戻る</a-->
 	</div>
 </body>
