@@ -26,12 +26,12 @@ import com.example.demo.service.UserService;
 public class UserController {
 	boolean flag = false;
 	int user_id;
-	
-	
 
-		@Autowired
-		UserService userService;
-	
+
+
+	@Autowired
+	UserService userService;
+
 
 	//head部分のアクション
 
@@ -53,7 +53,7 @@ public class UserController {
 	 */
 	@GetMapping(value = "/goods/goodslist")
 	public String displayGoodslist(Model model) {
-			return "goods/goodslist";
+		return "goods/goodslist";
 	}
 
 	/**
@@ -64,7 +64,7 @@ public class UserController {
 	//2/27追加
 	@GetMapping(value = "/user/view")
 	public String displayView(Model model) {
-		
+
 		if(flag) {
 			//userInfoエンティティをモデルに追加
 			model.addAttribute("userInfo", userService.getUserInfo(user_id));	
@@ -88,7 +88,7 @@ public class UserController {
 		model.addAttribute("loginRequest", new LoginRequest());
 		return "user/login";
 	}
-	
+
 
 	/**
 	 * 会社概要画面を表示
@@ -121,13 +121,13 @@ public class UserController {
 	public String displayGoods(@PathVariable Integer id, Model model) {
 		Goods goods = userService.getGoodsDetail(id);
 		System.out.println(goods.getImage());
-		
+
 		model.addAttribute("goods", goods);
 		return "goods/goods";
 	}
-	
-	
-	
+
+
+
 	//2/24追加, 2/27追加・修整
 	/**
 	 * 購入画面(ログイン中なら購入完了画面、未ログインならログイン画面に遷移)
@@ -148,12 +148,12 @@ public class UserController {
 		model.addAttribute("loginRequest", new LoginRequest());
 		return "user/login";
 	}
-	
 
-	
-	
-	
-	
+
+
+
+
+
 
 	//ログイン・会員登録画面の
 	//新規会員登録をクリックした場合動作
@@ -164,8 +164,8 @@ public class UserController {
 	 */
 	@GetMapping(value = "/user/add")
 	public String displayAdd(Model model) {
-		
-				model.addAttribute("userRequest", new UserRequest());
+
+		model.addAttribute("userRequest", new UserRequest());
 		return "user/add";
 	}
 
@@ -177,21 +177,27 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/user/create", method = RequestMethod.POST)
 	public String create(@Validated @ModelAttribute UserRequest userRequest, BindingResult result, Model model) {
-		if (result.hasErrors()) {
-			// 入力チェックエラーの場合
-			List<String> errorList = new ArrayList<String>();
-			for (ObjectError error : result.getAllErrors()) {
-				errorList.add(error.getDefaultMessage());
-			}
+		List<String> errorList = new ArrayList<String>();
+		for (ObjectError error : result.getAllErrors()) {
+			errorList.add(error.getDefaultMessage());
+		}
+		
+		if(userService.IsMailAddress(userRequest)) {
+			System.out.println("true");
+		} else {
+			System.out.println("false");
+			errorList.add("メールアドレスはすでに登録済みです");
+			
 			model.addAttribute("validationError", errorList);
 			return "user/add";
 		}
-		// ユーザー情報の登録
+		
 		userService.userEntry(userRequest);
 		return "redirect:/goods/top";
+		
 	}
-	
-	
+
+
 	//2/22追加
 	/**
 	 * ユーザーログイン
@@ -213,21 +219,21 @@ public class UserController {
 			return "user/login";
 		}
 		// ユーザーログイン認証成功
-		
+
 		flag = userService.checkLogin(loginRequest);
 		if(flag == true) {
 			user_id = UserService.userId;
 			return "redirect:/goods/top";
 		}else {
 			model.addAttribute("loginRequest", new LoginRequest());
-//			model.addAttribute("msg", "ユーザーデータが存在しません。");
+			//			model.addAttribute("msg", "ユーザーデータが存在しません。");
 			return "user/login";
 		}
-		
-		
+
+
 	}
-	
-	
-	
+
+
+
 
 }

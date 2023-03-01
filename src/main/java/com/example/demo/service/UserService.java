@@ -21,18 +21,34 @@ public class UserService {
 
 	@Autowired UserMapper repository;
 	public static int userId = 0;
-
+	
+	
+	//メールアドレスの件数をboolean型で返す
+	public boolean IsMailAddress(UserRequest userRequest) {
+		if(repository.getMailAddressCount(userRequest)>0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	
 	//会員情報登録
 	public void userEntry(UserRequest userRequest){
-		UserInfo userinfo = new UserInfo();
-		userinfo.setPw(userRequest.getPw());
-		userinfo.setName(userRequest.getName());		
-		Date birthDate = Date.valueOf(userRequest.getBirth());
-		userinfo.setBirth(birthDate);
-		userinfo.setAddress(userRequest.getAddress());
-		userinfo.setMail(userRequest.getMail());
-		userinfo.setCredit( userRequest.getCredit());
-		repository.userInsert(userinfo);
+//		int count = repository.getMailAddressCount(userRequest);
+		
+		
+			UserInfo userinfo = new UserInfo();
+			userinfo.setPw(userRequest.getPw());
+			userinfo.setName(userRequest.getName());		
+			Date birthDate = Date.valueOf(userRequest.getBirth());
+			userinfo.setBirth(birthDate);
+			userinfo.setAddress(userRequest.getAddress());
+			userinfo.setMail(userRequest.getMail());
+			userinfo.setCredit( userRequest.getCredit());
+			repository.userInsert(userinfo);
+		
+		
 	}
 
 	//ログイン取得(boolean型で取得)

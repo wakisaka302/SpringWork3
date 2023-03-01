@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.demo.dto.LoginRequest;
+import com.example.demo.dto.UserRequest;
 import com.example.demo.entity.Goods;
 import com.example.demo.entity.Sales;
 import com.example.demo.entity.UserInfo;
@@ -15,6 +16,9 @@ public interface UserMapper {
 
 	//ユーザー情報登録
 	void userInsert(UserInfo userinfo); 
+	
+	//メールアドレスの件数を返す
+	int getMailAddressCount(UserRequest userRequest);
 
 	//ログイン取得(取得件数を返す)
 	int selectLogin(LoginRequest loginRequest);

@@ -21,6 +21,13 @@
 		(#{pw},#{name},#{birth},#{address},#{mail},#{credit})
 	</insert>
 
+	<!-- 新規登録時、メールアドレス重複の件数を取ってくる-->
+	<select id="getMailAddressCount" resultType="Integer">
+		SELECT count(*) FROM userinfo
+		WHERE mail = #{mail}
+	</select>
+
+
 
 	<!-- ログイン(pwとmailを受け取って、一致するものの件数を返す) -->
 	<select id="getcount" resultType="Integer">
