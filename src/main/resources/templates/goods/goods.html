@@ -60,6 +60,7 @@ table {
 					<td class="left_img">
 						<!-- 画像表示 -->
 						<div th:object="${goods}">
+
 							
 							<img th:src="@{|/images/${goods.image}|}" width="200" height="200" class="d-block mx-auto" th:alt="*{goods_name}" />
 							
