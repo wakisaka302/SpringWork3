@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Length;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 /**
  * ユーザー情報 リクエストデータ
@@ -20,7 +21,8 @@ public class UserRequest implements Serializable {
   /**
    * 生年月日
    */
-  @Length(min = 10,max = 10, message = "誕生日は10桁以内で入力してください")
+  @Length(max = 10, message = "誕生日は10桁以内で入力してください")
+  @Pattern(regexp="^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$" ,message = "yyyy-MM-ddの形式で入力してください")
   private String birth;
   /**
    * 住所
