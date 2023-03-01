@@ -19,6 +19,7 @@ import com.example.demo.dto.LoginRequest;
 import com.example.demo.dto.OrderRequest;
 import com.example.demo.dto.UserRequest;
 import com.example.demo.entity.Goods;
+import com.example.demo.entity.UserSales;
 import com.example.demo.service.UserService;
 
 @Controller
@@ -62,37 +63,17 @@ public class UserController {
 	 */
 	//2/27追加
 	@GetMapping(value = "/user/view")
-	public String displayView(@PathVariable Long id, Model model) {
+	public String displayView(Model model) {
+		
 		if(flag) {
-			model.addAttribute("loginRequest", new LoginRequest());
-			
-//			userService.getUserInfo(user_id);
 			//userInfoエンティティをモデルに追加
-			model.addAttribute("userInfo", userService.getUserInfo(user_id));
-			
-//			userService.getUserSales(user_id);
+			model.addAttribute("userInfo", userService.getUserInfo(user_id));	
+			List<UserSales> list = userService.getUserSales(user_id);			
 			//Salesエンティティのリストをモデルに追加
-			model.addAttribute("userSales", userService.getUserSales(user_id));
-			
-			
-			
-			
-			return "user/login";
-//			return "user/view";
+			model.addAttribute("userSales", list);			
+			return "user/view";
 		}
-		
-		
-		//		Userinfo user = UserService.getUserInfo(id);
-		//      if(user.userid =!= null){
-		//		model.addAttribute("userData", user);
-		// List<Sales> list = UserService.getSales(id)
-		//model.addAttribute("userlist", list);
-		//return "user/view";
 
-		//      } else{
-		//		return "goods/top";
-		//	}
-		//		
 		model.addAttribute("loginRequest", new LoginRequest());
 		return "user/login";
 	}

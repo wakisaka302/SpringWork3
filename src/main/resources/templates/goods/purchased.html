@@ -16,9 +16,9 @@
       <thead class="table-light">
         <tr>
           <th scope="col" style="width: 10%"><div class="text-center">購入日</div></th>
-          <th scope="col" style="width: 10%"><div class="text-center">商品名</div></th>
+          <th scope="col" style="width: 20%"><div class="text-center">商品名</div></th>
           <th scope="col" style="width: 10%"><div class="text-center">単価</div></th>
-          <th scope="col" style="width: 10%"><div class="text-center">個数</div></th>
+          <th scope="col" style="width: 5%"><div class="text-center">個数</div></th>
           <th scope="col" style="width: 10%"><div class="text-center">合計金額</div></th>
         </tr>
       </thead>
@@ -32,12 +32,12 @@
           <td th:text="*{sales.total}"></td>
         </tr>
          -->
-         <tr>
-         <td th:text="*{sales.order_date}"></td>
-          <td th:text="*{goods.goods_name}"></td>
-          <td th:text="*{goods.price}"></td>
-          <td th:text="*{sales.order_num}"></td>
-          <td th:text="*{sales.total}"></td>
+         <tr align="center">
+         <td th:text="${sales.order_date}"></td>
+          <td th:text="${goods.goods_name}"></td>
+          <td th:text="${goods.price}"></td>
+          <td th:text="${sales.order_num}"></td>
+          <td th:text="${sales.total}"></td>
          </tr>
       </tbody>
     </table>
